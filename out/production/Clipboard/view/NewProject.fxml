@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.NewProjectController">
+   <children>
+      <Pane prefHeight="69.0" prefWidth="600.0">
+         <children>
+            <Label layoutX="249.0" layoutY="14.0" text="New Project" textAlignment="CENTER">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="203.0" layoutY="37.0" text="Think of a cool name for your project!" textAlignment="CENTER">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <TextField fx:id="projectName" layoutX="217.0" layoutY="87.0" promptText="Project Name" />
+            <Button fx:id="nextButton" onAction="#handleNextButton" layoutX="320.0" layoutY="135.0" mnemonicParsing="false" text="Next" />
+            <Button fx:id="cancelButton" onAction="#handleCancelButton" layoutX="227.0" layoutY="135.0" mnemonicParsing="false" text="Cancel" />
+         </children></Pane>
+   </children>
+</VBox>
