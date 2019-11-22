@@ -52,4 +52,12 @@ public class Project {
     public Date getLatestDate(){
         return this.latestDate;
     }
+
+    public void addTask(Task task){
+        if(!task.getStatus().equalsIgnoreCase("Done")){
+            tasksInProgress.add(task);
+        } else{
+            tasksCompleted.add(task);
+        }
+    }
 }

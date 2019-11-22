@@ -1,17 +1,70 @@
 package model;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Task {
-    String task_title;
-    String task_description;
-    String[] task_comments;
-    Date task_start_date;
-    Date task_latest_update_date;
-    Member task_assigned_to;
-    String task_status;
+    String title;
+    String status;
+    String difficulty;
+    String description;
+    List<Comment> comments = new ArrayList<>();
+    Date startDate;
+    Date latestUpdateDate;
+    Member assignedTo;
 
-    void assign_to_memebr(Member member){}
+    void assign_to_member(Member member){
 
-    
+    }
+
+    public Task(String title, String status, String difficulty){
+        this.title = title;
+        this.status = status;
+        this.difficulty = difficulty;
+    }
+
+    public void addComment(Comment comment){
+        this.comments.add(comment);
+    }
+
+    public List<Comment> getComments(){
+        return this.comments;
+    }
+
+    public void setTitle(String title){
+        this.title = title;
+    }
+    public String getTitle(){
+        return this.title;
+    }
+
+    public void setStatus(String status){
+        this.status = status;
+    }
+    public String getStatus(){
+        return this.status;
+    }
+
+    public void setDifficulty(String difficulty){
+        this.difficulty = difficulty;
+    }
+    public String getDifficulty(){
+        return this.difficulty;
+    }
+
+    public void setDescription(String description){
+        this.description = description;
+    }
+    public String getDescription(){
+        return this.description;
+    }
+
+    public void setAssignedTo(Member member){
+        this.assignedTo = member;
+    }
+
+    public Member getAssignedTo(){
+        return this.assignedTo;
+    }
 
 }
