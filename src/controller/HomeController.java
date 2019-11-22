@@ -21,9 +21,14 @@ public class HomeController extends BasicController{
     @FXML Label projectTitle, username, role;
     @FXML Button logoutButton, createButton, editButton
             , deleteButton, leftButton, rightButton, manageButton;
-    @FXML ListView<Task> assignedTasks;
-    @FXML ListView<Task> completedTasks;
+    @FXML ListView<Task> assignedTasks, completedTasks;
     @FXML VBox mainWindow;
+
+    @FXML ListView<Task> toDoListView, inProgressListView, haltedListView, doneListView;
+    ObservableList<Task> observableListToDo;
+    ObservableList<Task> observableListInProgress;
+    ObservableList<Task> observableListHalted;
+    ObservableList<Task> observableListDone;
 
     @FXML TextField taskTitle, commentTextField;
     @FXML TextArea descriptionTextArea;
@@ -52,6 +57,12 @@ public class HomeController extends BasicController{
         for(Member mem : project.getTeam().getMembers()){
             members.add(mem);
         }
+
+        // TODO:
+        /*
+        *   clear all status observable lists, traverse through project tasks and use
+        *   switch cases to add to the correct observable list, set list views for each
+        * */
 
         this.project = project;
         this.member = member;

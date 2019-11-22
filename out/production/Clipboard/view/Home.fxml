@@ -46,22 +46,26 @@
                      <children>
                         <Pane prefHeight="200.0" prefWidth="200.0">
                            <children>
-                              <Label layoutX="60.0" layoutY="14.0" text="To Do" />
+                              <Label layoutX="62.0" layoutY="14.0" text="To Do" textAlignment="CENTER" />
+                              <ListView fx:id="assignedTasks1" layoutX="-2.0" layoutY="39.0" prefHeight="320.0" prefWidth="160.0" />
                            </children>
                         </Pane>
                         <Pane prefHeight="200.0" prefWidth="200.0">
                            <children>
-                              <Label layoutX="43.0" layoutY="14.0" text="In Progress" textAlignment="CENTER" />
+                              <Label layoutX="48.0" layoutY="14.0" text="In Progress" textAlignment="CENTER" />
+                              <ListView fx:id="assignedTasks11" layoutX="-2.0" layoutY="39.0" prefHeight="320.0" prefWidth="160.0" />
                            </children>
                         </Pane>
                         <Pane prefHeight="200.0" prefWidth="200.0">
                            <children>
-                              <Label layoutX="58.0" layoutY="14.0" text="Halted" textAlignment="CENTER" />
+                              <Label layoutX="60.0" layoutY="14.0" text="Halted" textAlignment="CENTER" />
+                              <ListView fx:id="assignedTasks12" layoutX="-2.0" layoutY="39.0" prefHeight="320.0" prefWidth="160.0" />
                            </children>
                         </Pane>
                         <Pane prefHeight="200.0" prefWidth="200.0">
                            <children>
-                              <Label layoutX="62.0" layoutY="14.0" text="Done" textAlignment="CENTER" />
+                              <Label layoutX="63.0" layoutY="14.0" text="Done" textAlignment="CENTER" />
+                              <ListView fx:id="assignedTasks13" layoutX="-2.0" layoutY="39.0" prefHeight="320.0" prefWidth="160.0" />
                            </children>
                         </Pane>
                      </children>
@@ -92,7 +96,7 @@
          </children>
       </VBox>
       <DialogPane fx:id="createTaskPane" contentText="" headerText="Hello" layoutX="134.0" layoutY="37.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="433.0" prefWidth="722.0" style="-fx-border-width: 1; -fx-border-style: solid; -fx-border-radius: 5;" visible="false">
-          <header>
+         <header>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="366.0" prefWidth="722.0">
                <children>
                   <TextField fx:id="taskTitle" layoutX="48.0" layoutY="83.0" promptText="Task Title" />
@@ -104,17 +108,17 @@
                         <Font size="18.0" />
                      </font>
                   </Text>
-                  <Button fx:id="confirmButton" onAction="#handleConfirmButton" layoutX="537.0" layoutY="318.0" mnemonicParsing="false" text="Confirm" />
-                  <Button fx:id="cancelButton" onAction="#handleCancelButton" layoutX="617.0" layoutY="318.0" mnemonicParsing="false" text="Cancel" />
+                  <Button fx:id="confirmButton" layoutX="537.0" layoutY="318.0" mnemonicParsing="false" onAction="#handleConfirmButton" text="Confirm" />
+                  <Button fx:id="cancelButton" layoutX="617.0" layoutY="318.0" mnemonicParsing="false" onAction="#handleCancelButton" text="Cancel" />
                   <ComboBox fx:id="statusComboBox" layoutX="48.0" layoutY="46.0" prefWidth="150.0" promptText="Task Type" />
                   <ComboBox fx:id="assignedComboBox" layoutX="48.0" layoutY="291.0" prefWidth="150.0" promptText="Optional Assign To" />
                   <ComboBox fx:id="difficultyComboBox" layoutX="234.0" layoutY="83.0" prefWidth="150.0" promptText="Difficulty" />
                </children>
             </AnchorPane>
-          </header>
-          <expandableContent>
+         </header>
+         <expandableContent>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="320.0" />
-          </expandableContent>
+         </expandableContent>
       </DialogPane>
    </children>
 </Pane>
