@@ -25,6 +25,9 @@ public class HomeController extends BasicController{
     @FXML VBox mainWindow;
 
     @FXML ListView<Task> toDoListView, inProgressListView, haltedListView, doneListView;
+    int index;
+    Task selectedTask;
+
     List<Task> toDoList = new ArrayList<>();
     List<Task> inProgressList = new ArrayList<>();
     List<Task> haltedList = new ArrayList<>();
@@ -48,6 +51,10 @@ public class HomeController extends BasicController{
     ObservableList<Member> membersObservableList;
 
     void start(Project project, Member member){
+        makeListSelectable(toDoListView);
+        makeListSelectable(inProgressListView);
+        makeListSelectable(haltedListView);
+        makeListSelectable(doneListView);
         taskTypes.clear();
         taskTypes.add("To Do");
         taskTypes.add("In Progress");
@@ -181,6 +188,21 @@ public class HomeController extends BasicController{
             }
         }catch(Exception e){
             e.printStackTrace();
+        }
+    }
+    public void makeListSelectable(ListView<Task> list){
+        list.getSelectionModel().selectedItemProperty().addListener((listObservable,oldValues,newValues) -> cellWasSelected(list));
+        list.getSelectionModel().select(0);
+    }
+    public void cellWasSelected(ListView<Task> listView){ // functions provided when a cell is selected in list
+        try
+        {
+            index = listView.getSelectionModel().getSelectedIndex();
+            selectedTask = listView.getSelectionModel().getSelectedItem();
+            System.out.println(selectedTask.getStatus()+": "+index+", "+selectedTask.getTitle());
+        }
+        catch(Exception e){
+            System.out.println("cellWasSelected() -> Caught");
         }
     }
 }
