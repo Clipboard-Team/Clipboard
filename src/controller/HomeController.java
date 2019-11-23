@@ -146,37 +146,39 @@ public class HomeController extends BasicController{
     public void handleConfirmButton(ActionEvent event){
         try{
             if(!statusComboBox.getSelectionModel().isEmpty() && !taskTitle.getText().isEmpty() && !difficultyComboBox.getSelectionModel().isEmpty()){
-                System.out.println("Valid input");
                 String title = taskTitle.getText();
                 String status = statusComboBox.getValue().toString();
                 String difficulty = difficultyComboBox.getValue().toString();
                 Task t = new Task(title, status, difficulty);
-                if(!descriptionTextArea.getText().isEmpty()){
-                    t.setDescription(descriptionTextArea.getText());
-                }
-                if(!assignedComboBox.getSelectionModel().isEmpty()){
-                    Member member = null;
-                    for(Member mem : members){
-                        if(mem.getName().equals(assignedComboBox.getValue().toString())){
-                            member = mem;
-                            break;
-                        }
+                if(!project.getTeam().taskExists(t)){
+                    System.out.println("Valid input");
+                    if(!descriptionTextArea.getText().isEmpty()){
+                        t.setDescription(descriptionTextArea.getText());
                     }
-                    t.setAssignedTo(member);
+                    if(!assignedComboBox.getSelectionModel().isEmpty()){
+                        Member member = null;
+                        for(Member mem : members){
+                            if(mem.getName().equals(assignedComboBox.getValue().toString())){
+                                member = mem;
+                                break;
+                            }
+                        }
+                        t.setAssignedTo(member);
+                    }
+                    if(!commentTextField.getText().isEmpty()){
+                        t.addComment(new Comment(commentTextField.getText(), new Date()));
+                    }
+                    project.getTeam().addTask(t);
+                    System.out.println("Adding task to project");
+                    System.out.println("Task: "+t.getTitle()+" "+t.getStatus()+" "+t.getDifficulty()
+                            +"\n\t"+t.getDescription()+"\n\t"+t.getComments()+"\n\t"+t.getAssignedTo());
+                    createTaskPane.setVisible(false);
+                    mainWindow.setDisable(false);
+                    renderTasks();
                 }
-                if(!commentTextField.getText().isEmpty()){
-                    t.addComment(new Comment(commentTextField.getText(), new Date()));
-                }
-                project.getTeam().addTask(t);
-                System.out.println("Adding task to project");
-                System.out.println("Task: "+t.getTitle()+" "+t.getStatus()+" "+t.getDifficulty()
-                        +"\n\t"+t.getDescription()+"\n\t"+t.getComments()+"\n\t"+t.getAssignedTo());
             } else{
                 System.out.println("Invalid input");
             }
-            createTaskPane.setVisible(false);
-            mainWindow.setDisable(false);
-            renderTasks();
         }catch(Exception e){
             e.printStackTrace();
         }

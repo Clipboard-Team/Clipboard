@@ -14,88 +14,88 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomeController">
+<Pane prefHeight="800.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomeController">
    <children>
-      <VBox fx:id="mainWindow" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="1000.0">
+      <VBox fx:id="mainWindow" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1600.0">
          <children>
-            <Pane prefHeight="230.0" prefWidth="1000.0">
+            <Pane prefHeight="150.0" prefWidth="1000.0">
                <children>
-                  <Button fx:id="logoutButton" layoutX="26.0" layoutY="27.0" mnemonicParsing="false" onAction="#handleLogoutButton" text="Logout" />
-                  <Label fx:id="username" layoutX="879.0" layoutY="17.0" text="Username">
+                  <Button fx:id="logoutButton" layoutX="59.0" layoutY="39.0" mnemonicParsing="false" onAction="#handleLogoutButton" text="Logout" />
+                  <Label fx:id="username" layoutX="1457.0" layoutY="23.0" text="Username">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="role" layoutX="879.0" layoutY="43.0" text="Admin" />
-                  <Label fx:id="projectTitle" layoutX="424.0" layoutY="29.0" text="Project Name" textAlignment="CENTER">
+                  <Label fx:id="role" layoutX="1457.0" layoutY="49.0" text="Admin" />
+                  <Label fx:id="projectTitle" layoutX="746.0" layoutY="51.0" text="Project Name" textAlignment="CENTER">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
                </children>
             </Pane>
-            <HBox prefHeight="530.0" prefWidth="1000.0">
+            <HBox prefHeight="550.0" prefWidth="1000.0">
                <children>
-                  <Pane prefHeight="200.0" prefWidth="200.0">
+                  <Pane prefHeight="400.0" prefWidth="300.0">
                      <children>
-                        <Label layoutX="14.0" layoutY="14.0" text="Your Assigned Tasks" />
-                        <ListView fx:id="assignedTasks" layoutX="14.0" layoutY="40.0" prefHeight="320.0" prefWidth="160.0" />
+                        <Label layoutX="85.0" layoutY="14.0" text="Your Assigned Tasks" />
+                        <ListView fx:id="assignedTasks" layoutX="47.0" layoutY="35.0" prefHeight="370.0" prefWidth="190.0" />
                      </children>
                   </Pane>
-                  <HBox prefHeight="380.0" prefWidth="638.0">
+                  <HBox prefHeight="400.0" prefWidth="1000.0">
                      <children>
-                        <Pane prefHeight="200.0" prefWidth="200.0">
+                        <Pane prefHeight="400.0" prefWidth="250.0">
                            <children>
-                              <Label layoutX="62.0" layoutY="14.0" text="To Do" textAlignment="CENTER" />
-                              <ListView fx:id="toDoListView" layoutX="-2.0" layoutY="39.0" prefHeight="320.0" prefWidth="160.0" />
+                              <Label layoutX="106.0" layoutY="14.0" text="To Do" textAlignment="CENTER" />
+                              <ListView fx:id="toDoListView" layoutX="27.0" layoutY="31.0" prefHeight="370.0" prefWidth="190.0" />
                            </children>
                         </Pane>
-                        <Pane prefHeight="200.0" prefWidth="200.0">
+                        <Pane prefHeight="400.0" prefWidth="250.0">
                            <children>
-                              <Label layoutX="48.0" layoutY="14.0" text="In Progress" textAlignment="CENTER" />
-                              <ListView fx:id="inProgressListView" layoutX="-2.0" layoutY="39.0" prefHeight="320.0" prefWidth="160.0" />
+                              <Label layoutX="94.0" layoutY="14.0" text="In Progress" textAlignment="CENTER" />
+                              <ListView fx:id="inProgressListView" layoutX="28.0" layoutY="35.0" prefHeight="370.0" prefWidth="190.0" />
                            </children>
                         </Pane>
-                        <Pane prefHeight="200.0" prefWidth="200.0">
+                        <Pane prefHeight="400.0" prefWidth="250.0">
                            <children>
-                              <Label layoutX="60.0" layoutY="14.0" text="Halted" textAlignment="CENTER" />
-                              <ListView fx:id="haltedListView" layoutX="-2.0" layoutY="39.0" prefHeight="320.0" prefWidth="160.0" />
+                              <Label layoutX="108.0" layoutY="14.0" text="Halted" textAlignment="CENTER" />
+                              <ListView fx:id="haltedListView" layoutX="33.0" layoutY="35.0" prefHeight="370.0" prefWidth="190.0" />
                            </children>
                         </Pane>
-                        <Pane prefHeight="200.0" prefWidth="200.0">
+                        <Pane prefHeight="400.0" prefWidth="250.0">
                            <children>
-                              <Label layoutX="63.0" layoutY="14.0" text="Done" textAlignment="CENTER" />
-                              <ListView fx:id="doneListView" layoutX="-2.0" layoutY="39.0" prefHeight="320.0" prefWidth="160.0" />
+                              <Label layoutX="107.0" layoutY="14.0" text="Done" textAlignment="CENTER" />
+                              <ListView fx:id="doneListView" layoutX="26.0" layoutY="35.0" prefHeight="370.0" prefWidth="190.0" />
                            </children>
                         </Pane>
                      </children>
                   </HBox>
-                  <Pane prefHeight="200.0" prefWidth="200.0">
+                  <Pane prefHeight="400.0" prefWidth="300.0">
                      <children>
-                        <Label layoutX="14.0" layoutY="14.0" text="Your Completed Tasks" />
-                        <ListView fx:id="completedTasks" layoutX="14.0" layoutY="40.0" prefHeight="320.0" prefWidth="160.0" />
+                        <Label layoutX="88.0" layoutY="14.0" text="Your Completed Tasks" />
+                        <ListView fx:id="completedTasks" layoutX="55.0" layoutY="35.0" prefHeight="370.0" prefWidth="190.0" />
                      </children>
                   </Pane>
                </children>
             </HBox>
-            <Pane prefHeight="240.0" prefWidth="1000.0">
+            <Pane prefHeight="100.0" prefWidth="1000.0">
                <children>
-                  <Button fx:id="leftButton" layoutX="381.0" layoutY="32.0" mnemonicParsing="false" onAction="#handleLeftButton" text="Left" />
-                  <Button fx:id="rightButton" layoutX="575.0" layoutY="32.0" mnemonicParsing="false" onAction="#handleRightButton" text="Right" />
-                  <Label layoutX="454.0" layoutY="34.0" text="Move Task">
+                  <Button fx:id="leftButton" layoutX="690.0" layoutY="35.0" mnemonicParsing="false" onAction="#handleLeftButton" text="Left" />
+                  <Button fx:id="rightButton" layoutX="883.0" layoutY="34.0" mnemonicParsing="false" onAction="#handleRightButton" text="Right" />
+                  <Label layoutX="765.0" layoutY="37.0" text="Move Task">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Button fx:id="createButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleCreateButton" text="Create Task" />
-                  <Button fx:id="deleteButton" layoutX="14.0" layoutY="46.0" mnemonicParsing="false" onAction="#handleDeleteButton" text="Delete Task" />
-                  <Button fx:id="editButton" layoutX="122.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleEditButton" text="Edit Task" />
-                  <Button fx:id="manageButton" layoutX="873.0" layoutY="28.0" mnemonicParsing="false" onAction="#handleManageButton" text="Manage Team" />
+                  <Button fx:id="createButton" layoutX="46.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleCreateButton" text="Create Task" />
+                  <Button fx:id="deleteButton" layoutX="46.0" layoutY="52.0" mnemonicParsing="false" onAction="#handleDeleteButton" text="Delete Task" />
+                  <Button fx:id="editButton" layoutX="154.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleEditButton" text="Edit Task" />
+                  <Button fx:id="manageButton" layoutX="1410.0" layoutY="33.0" mnemonicParsing="false" onAction="#handleManageButton" text="Manage Team" />
                </children>
             </Pane>
          </children>
       </VBox>
-      <DialogPane fx:id="createTaskPane" contentText="" headerText="Hello" layoutX="134.0" layoutY="37.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="433.0" prefWidth="722.0" style="-fx-border-width: 1; -fx-border-style: solid; -fx-border-radius: 5;" visible="false">
+      <DialogPane fx:id="createTaskPane" contentText="" headerText="Hello" layoutX="374.0" layoutY="157.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="433.0" prefWidth="722.0" style="-fx-border-width: 1; -fx-border-style: solid; -fx-border-radius: 5;" visible="false">
          <header>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="366.0" prefWidth="722.0">
                <children>
