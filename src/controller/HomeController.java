@@ -72,6 +72,10 @@ public class HomeController extends BasicController{
     }
 
     public void renderTasks(){
+        toDoList.clear();
+        inProgressList.clear();
+        haltedList.clear();
+        doneList.clear();
             for(Task t : project.getTeam().getTasks()){
                 switch(t.getStatus()){
                     case "To Do":
