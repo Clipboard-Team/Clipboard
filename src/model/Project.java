@@ -9,8 +9,6 @@ public class Project {
     private String description;
     private Date startDate;
     private Date latestDate;
-    private List<Task> tasksInProgress = new ArrayList<>();
-    private List<Task> tasksCompleted = new ArrayList<>();
 
     public Project(String title){
         this.title = title;
@@ -51,13 +49,5 @@ public class Project {
     }
     public Date getLatestDate(){
         return this.latestDate;
-    }
-
-    public void addTask(Task task){
-        if(!task.getStatus().equalsIgnoreCase("Done")){
-            tasksInProgress.add(task);
-        } else{
-            tasksCompleted.add(task);
-        }
     }
 }

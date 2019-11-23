@@ -5,6 +5,7 @@ import java.util.List;
 public class Team {
     private List<Member> members = new ArrayList<>();
     private String title;
+    private List<Task> tasks = new ArrayList<>();
 
     public Team(String title){
         this.title = title;
@@ -15,5 +16,17 @@ public class Team {
     }
     public List<Member> getMembers(){
         return this.members;
+    }
+
+    public void addTask(Task task){
+        tasks.add(task);
+    }
+    public List<Task> getTasks(){
+        if(tasks.isEmpty()){
+            System.out.println("empty");
+            return new ArrayList<Task>();
+        }else {
+            return this.tasks;
+        }
     }
 }

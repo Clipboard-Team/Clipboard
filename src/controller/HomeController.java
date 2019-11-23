@@ -25,10 +25,10 @@ public class HomeController extends BasicController{
     @FXML VBox mainWindow;
 
     @FXML ListView<Task> toDoListView, inProgressListView, haltedListView, doneListView;
-    ObservableList<Task> observableListToDo;
-    ObservableList<Task> observableListInProgress;
-    ObservableList<Task> observableListHalted;
-    ObservableList<Task> observableListDone;
+    ObservableList<Task> toDoObservableList;
+    ObservableList<Task> inProgressObservableList;
+    ObservableList<Task> haltedObservableList;
+    ObservableList<Task> doneObservableList;
 
     @FXML TextField taskTitle, commentTextField;
     @FXML TextArea descriptionTextArea;
@@ -36,11 +36,11 @@ public class HomeController extends BasicController{
     @FXML Button confirmButton, cancelButton;
     @FXML DialogPane createTaskPane;
     List<String> taskTypes = new ArrayList<>();
-    ObservableList<String> observableListTaskTypes;
+    ObservableList<String> taskTypesObservableList;
     List<String> difficulties = new ArrayList<>();
-    ObservableList<String> observableListDifficulties;
+    ObservableList<String> difficultiesTypesObservableList;
     List<Member> members = new ArrayList<>();
-    ObservableList<Member> observableListMembers;
+    ObservableList<Member> membersObservableList;
 
     void start(Project project, Member member){
         taskTypes.clear();
@@ -58,30 +58,51 @@ public class HomeController extends BasicController{
             members.add(mem);
         }
 
-        // TODO:
-        /*
-        *   clear all status observable lists, traverse through project tasks and use
-        *   switch cases to add to the correct observable list, set list views for each
-        * */
-
         this.project = project;
         this.member = member;
         projectTitle.setText(project.getTitle());
         username.setText(member.getName());
+        renderTasks();
         //role.setText(member.getRole());
     }
 
+    public void renderTasks(){
+        try {
+            for(Task t : project.getTeam().getTasks()){
+                switch(t.getStatus()){
+                    case "To Do":
+                        toDoObservableList.add(t);
+                        break;
+                    case "In Progress":
+                        inProgressObservableList.add(t);
+                        break;
+                    case "Halted":
+                        haltedObservableList.add(t);
+                        break;
+                    case "Done":
+                        doneObservableList.add(t);
+                        break;
+                }
+            }
+            toDoListView.setItems(toDoObservableList);
+            inProgressListView.setItems(inProgressObservableList);
+            haltedListView.setItems(haltedObservableList);
+            doneListView.setItems(doneObservableList);
+        }catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
     public void handleLogoutButton(ActionEvent event){
 
     }
     public void handleCreateButton(ActionEvent event){
         try{
-            observableListTaskTypes = FXCollections.observableArrayList(taskTypes);
-            observableListDifficulties = FXCollections.observableArrayList(difficulties);
-            observableListMembers = FXCollections.observableArrayList(members);
-            statusComboBox.setItems(observableListTaskTypes);
-            difficultyComboBox.setItems(observableListDifficulties);
-            assignedComboBox.setItems(observableListMembers);
+            taskTypesObservableList = FXCollections.observableArrayList(taskTypes);
+            difficultiesTypesObservableList = FXCollections.observableArrayList(difficulties);
+            membersObservableList = FXCollections.observableArrayList(members);
+            statusComboBox.setItems(taskTypesObservableList);
+            difficultyComboBox.setItems(difficultiesTypesObservableList);
+            assignedComboBox.setItems(membersObservableList);
 
             createTaskPane.setVisible(true);
             mainWindow.setDisable(true);
@@ -136,7 +157,7 @@ public class HomeController extends BasicController{
                 if(!commentTextField.getText().isEmpty()){
                     t.addComment(new Comment(commentTextField.getText(), new Date()));
                 }
-                //project.addTask(t);
+                project.getTeam().addTask(t);
                 System.out.println("Adding task to project");
                 System.out.println("Task: "+t.getTitle()+" "+t.getStatus()+" "+t.getDifficulty()
                         +"\n\t"+t.getDescription()+"\n\t"+t.getComments()+"\n\t"+t.getAssignedTo());
@@ -145,6 +166,7 @@ public class HomeController extends BasicController{
             }
             createTaskPane.setVisible(false);
             mainWindow.setDisable(false);
+            renderTasks();
         }catch(Exception e){
             e.printStackTrace();
         }
