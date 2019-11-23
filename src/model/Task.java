@@ -67,4 +67,12 @@ public class Task {
         return this.assignedTo;
     }
 
+    public String toString(){
+        if(this.assignedTo != null){
+            return this.getTitle()+" ("+this.getDifficulty()+") : "+this.getAssignedTo();
+        }else{
+            return this.getTitle()+" ("+this.getDifficulty()+")";
+        }
+    }
+
 }

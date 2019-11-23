@@ -25,10 +25,15 @@ public class HomeController extends BasicController{
     @FXML VBox mainWindow;
 
     @FXML ListView<Task> toDoListView, inProgressListView, haltedListView, doneListView;
-    ObservableList<Task> toDoObservableList;
-    ObservableList<Task> inProgressObservableList;
-    ObservableList<Task> haltedObservableList;
-    ObservableList<Task> doneObservableList;
+    List<Task> toDoList = new ArrayList<>();
+    List<Task> inProgressList = new ArrayList<>();
+    List<Task> haltedList = new ArrayList<>();
+    List<Task> doneList = new ArrayList<>();
+    ObservableList<Task> toDoObservableList = FXCollections.observableArrayList(toDoList);
+    ObservableList<Task> inProgressObservableList = FXCollections.observableArrayList(inProgressList);
+    ObservableList<Task> haltedObservableList = FXCollections.observableArrayList(haltedList);
+    ObservableList<Task> doneObservableList = FXCollections.observableArrayList(doneList);
+
 
     @FXML TextField taskTitle, commentTextField;
     @FXML TextArea descriptionTextArea;
@@ -67,30 +72,31 @@ public class HomeController extends BasicController{
     }
 
     public void renderTasks(){
-        try {
             for(Task t : project.getTeam().getTasks()){
                 switch(t.getStatus()){
                     case "To Do":
-                        toDoObservableList.add(t);
+                        toDoList.add(t);
                         break;
                     case "In Progress":
-                        inProgressObservableList.add(t);
+                        inProgressList.add(t);
                         break;
                     case "Halted":
-                        haltedObservableList.add(t);
+                        haltedList.add(t);
                         break;
                     case "Done":
-                        doneObservableList.add(t);
+                        doneList.add(t);
                         break;
                 }
             }
-            toDoListView.setItems(toDoObservableList);
+
+        toDoObservableList = FXCollections.observableArrayList(toDoList);
+        inProgressObservableList = FXCollections.observableArrayList(inProgressList);
+        haltedObservableList = FXCollections.observableArrayList(haltedList);
+        doneObservableList = FXCollections.observableArrayList(doneList);
+        toDoListView.setItems(toDoObservableList);
             inProgressListView.setItems(inProgressObservableList);
             haltedListView.setItems(haltedObservableList);
             doneListView.setItems(doneObservableList);
-        }catch(Exception e) {
-            e.printStackTrace();
-        }
     }
     public void handleLogoutButton(ActionEvent event){
 
