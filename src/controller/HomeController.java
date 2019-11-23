@@ -105,9 +105,9 @@ public class HomeController extends BasicController{
         haltedObservableList = FXCollections.observableArrayList(haltedList);
         doneObservableList = FXCollections.observableArrayList(doneList);
         toDoListView.setItems(toDoObservableList);
-            inProgressListView.setItems(inProgressObservableList);
-            haltedListView.setItems(haltedObservableList);
-            doneListView.setItems(doneObservableList);
+        inProgressListView.setItems(inProgressObservableList);
+        haltedListView.setItems(haltedObservableList);
+        doneListView.setItems(doneObservableList);
     }
     public void handleLogoutButton(ActionEvent event){
 
@@ -133,8 +133,48 @@ public class HomeController extends BasicController{
     public void handleDeleteButton(ActionEvent event){
 
     }
+    /*
+    * TODO: very buggy left task drag action,
+    *   check null in handleLeftButton and cellWasSelected function
+    * */
     public void handleLeftButton(ActionEvent event){
+        if(selectedTask != null){
+            switch(selectedTask.getStatus()){
+                case "To Do":
+                    System.out.println("Cannot move left any further.");
+                    break;
+                case "In Progress":
+                    selectedTask.setStatus("To Do");
+                    toDoList.add(selectedTask);
+                    toDoObservableList = FXCollections.observableArrayList(toDoList);
+                    toDoListView.setItems(toDoObservableList);
 
+                    inProgressList.remove(selectedTask);
+                    inProgressObservableList = FXCollections.observableArrayList(inProgressList);
+                    inProgressListView.setItems(inProgressObservableList);
+                    break;
+                case "Halted":
+                    selectedTask.setStatus("In Progress");
+                    inProgressList.add(selectedTask);
+                    inProgressObservableList = FXCollections.observableArrayList(inProgressList);
+                    inProgressListView.setItems(inProgressObservableList);
+
+                    haltedList.remove(selectedTask);
+                    haltedObservableList = FXCollections.observableArrayList(haltedList);
+                    haltedListView.setItems(haltedObservableList);
+                    break;
+                case "Done":
+                    selectedTask.setStatus("Halted");
+                    haltedList.add(selectedTask);
+                    haltedObservableList = FXCollections.observableArrayList(haltedList);
+                    haltedListView.setItems(haltedObservableList);
+
+                    doneList.remove(selectedTask);
+                    doneObservableList = FXCollections.observableArrayList(doneList);
+                    doneListView.setItems(doneObservableList);
+                    break;
+            }
+        }
     }
     public void handleRightButton(ActionEvent event){
 
@@ -214,12 +254,13 @@ public class HomeController extends BasicController{
                 }
             } catch(Exception e){
                 System.out.println("Caught");
-                //e.printStackTrace();
+                e.printStackTrace();
             }
-            System.out.println(selectedTask.getStatus()+": "+index+", "+selectedTask.getTitle());
+            //System.out.println(selectedTask.getStatus()+": "+index+", "+selectedTask.getTitle());
         }
         catch(Exception e){
             System.out.println("cellWasSelected() -> Caught");
+            e.printStackTrace();
         }
     }
 }
