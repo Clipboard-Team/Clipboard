@@ -29,8 +29,9 @@ public class NewMemberController extends BasicController{
         controller.start(project, project.getTeam().getMembers().get(0));
     }
     public void handleAddButton(ActionEvent event){
-        if(!username.getText().isEmpty()){
-            System.out.println("Add Button tapped");
+        if(!username.getText().isEmpty() &&
+                !project.getTeam().memberExists(
+                        new Member(username.getText(), project.getTeam()))){
             Member mem = new Member(username.getText(), project.getTeam());
             project.getTeam().addMember(mem);
             observableList.add(mem);

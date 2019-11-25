@@ -37,4 +37,12 @@ public class Team {
         }
         return false;
     }
+    public boolean memberExists(Member member){
+        for(Member mem : members){
+            if(mem.getName().equalsIgnoreCase(member.getName())){
+                return true;
+            }
+        }
+        return false;
+    }
 }

@@ -110,7 +110,7 @@ public class HomeController extends BasicController{
         doneListView.setItems(doneObservableList);
     }
     public void handleLogoutButton(ActionEvent event){
-
+        changeScreen("../view/login.fxml", event, new LoginController());
     }
     public void handleCreateButton(ActionEvent event){
         try{
@@ -254,13 +254,13 @@ public class HomeController extends BasicController{
                 }
             } catch(Exception e){
                 System.out.println("Caught");
-                e.printStackTrace();
+                //e.printStackTrace();
             }
             //System.out.println(selectedTask.getStatus()+": "+index+", "+selectedTask.getTitle());
         }
         catch(Exception e){
             System.out.println("cellWasSelected() -> Caught");
-            e.printStackTrace();
+            //e.printStackTrace();
         }
     }
 }
