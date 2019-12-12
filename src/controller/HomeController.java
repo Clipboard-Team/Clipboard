@@ -334,7 +334,7 @@ public class HomeController extends BasicController{
 
 
     @FXML DialogPane viewTaskPane;
-    @FXML Text statusViewText, titleViewText, difficultyViewText;
+    @FXML Text statusViewText, titleViewText, difficultyViewText, assignedViewText;
     @FXML TextField commentViewTextField;
     @FXML Button goToEditViewButton, saveViewButton, assignViewButton, addCommentViewButton;
     @FXML ListView<Comment> commentsListView;
@@ -347,6 +347,9 @@ public class HomeController extends BasicController{
                 difficultyViewText.setText(selectedTask.getDifficulty());
                 commentsObservableList = FXCollections.observableArrayList(selectedTask.getComments());
                 commentsListView.setItems(commentsObservableList);
+                if(selectedTask.getAssignedTo() != null){
+                    assignedViewText.setText(selectedTask.getAssignedTo().getName());
+                }
 
                 viewTaskPane.setVisible(true);
                 mainWindow.setDisable(true);
@@ -369,10 +372,16 @@ public class HomeController extends BasicController{
     }
     public void handleAssignViewButton(ActionEvent event){
         System.out.println("Edit button tapped");
-        selectedTask.setAssignedTo(member);
-        selectedTask.addComment(new Comment("Task now assigned to "+selectedTask.getAssignedTo().getName(), new Date()));
+        if(selectedTask.getAssignedTo() == null){
+            selectedTask.setAssignedTo(member);
+            selectedTask.addComment(new Comment("Task now assigned to "+selectedTask.getAssignedTo().getName(), new Date()));
+        } else if(!selectedTask.getAssignedTo().getName().equalsIgnoreCase(member.getName())){
+            selectedTask.setAssignedTo(member);
+            selectedTask.addComment(new Comment("Task now assigned to "+selectedTask.getAssignedTo().getName(), new Date()));
+        }
         commentsObservableList = FXCollections.observableArrayList(selectedTask.getComments());
         commentsListView.setItems(commentsObservableList);
+        assignedViewText.setText(selectedTask.getAssignedTo().getName());
     }
     public void handleAddCommentViewButton(ActionEvent event){
         System.out.println("Edit button tapped");
