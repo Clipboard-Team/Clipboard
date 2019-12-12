@@ -335,15 +335,18 @@ public class HomeController extends BasicController{
 
     @FXML DialogPane viewTaskPane;
     @FXML Text statusViewText, titleViewText, difficultyViewText;
+    @FXML TextField commentViewTextField;
     @FXML Button goToEditViewButton, saveViewButton, assignViewButton, addCommentViewButton;
     @FXML ListView<Comment> commentsListView;
+    ObservableList<Comment> commentsObservableList;
     public void handleViewButton(ActionEvent event){
         try{
             if(selectedTask != null){
                 statusViewText.setText(selectedTask.getStatus());
                 titleViewText.setText(selectedTask.getTitle());
                 difficultyViewText.setText(selectedTask.getDifficulty());
-
+                commentsObservableList = FXCollections.observableArrayList(selectedTask.getComments());
+                commentsListView.setItems(commentsObservableList);
 
                 viewTaskPane.setVisible(true);
                 mainWindow.setDisable(true);
@@ -357,11 +360,26 @@ public class HomeController extends BasicController{
     }
     public void handleSaveViewButton(ActionEvent event){
         System.out.println("Edit button tapped");
+        try{
+            viewTaskPane.setVisible(false);
+            mainWindow.setDisable(false);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
     public void handleAssignViewButton(ActionEvent event){
         System.out.println("Edit button tapped");
+        selectedTask.setAssignedTo(member);
+        selectedTask.addComment(new Comment("Task Now Assigned To: "+selectedTask.getAssignedTo().getName(), new Date()));
+        commentsObservableList = FXCollections.observableArrayList(selectedTask.getComments());
+        commentsListView.setItems(commentsObservableList);
     }
     public void handleAddCommentViewButton(ActionEvent event){
         System.out.println("Edit button tapped");
+        if(commentViewTextField.getText() != null){
+            selectedTask.addComment(new Comment(commentViewTextField.getText(), new Date()));
+            commentsObservableList = FXCollections.observableArrayList(selectedTask.getComments());
+            commentsListView.setItems(commentsObservableList);
+        }
     }
 }

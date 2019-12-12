@@ -126,7 +126,7 @@
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="366.0" prefWidth="722.0">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-                  <TextField fx:id="commentTextField1" layoutX="48.0" layoutY="257.0" prefHeight="27.0" prefWidth="348.0" promptText="Add a Comment" />
+                  <TextField fx:id="commentViewTextField" layoutX="48.0" layoutY="257.0" prefHeight="27.0" prefWidth="348.0" promptText="Add a Comment" />
                   <Text layoutX="341.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Task" textAlignment="CENTER">
                      <font>
                         <Font size="18.0" />
