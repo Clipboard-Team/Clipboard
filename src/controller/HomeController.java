@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import model.Comment;
 import model.Member;
 import model.Project;
@@ -332,17 +333,28 @@ public class HomeController extends BasicController{
     }
 
 
-    
+    @FXML DialogPane viewTaskPane;
+    @FXML Text statusViewText, titleViewText, difficultyViewText;
+    @FXML Button goToEditViewButton, saveViewButton, assignViewButton, addCommentViewButton;
+    @FXML ListView<Comment> commentsListView;
+    public void handleViewButton(ActionEvent event){
+        try{
+            viewTaskPane.setVisible(true);
+            mainWindow.setDisable(true);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
     public void handleGoToEditViewButton(ActionEvent event){
-
+        System.out.println("Edit button tapped");
     }
     public void handleSaveViewButton(ActionEvent event){
-
+        System.out.println("Edit button tapped");
     }
     public void handleAssignViewButton(ActionEvent event){
-
+        System.out.println("Edit button tapped");
     }
     public void handleAddCommentViewButton(ActionEvent event){
-
+        System.out.println("Edit button tapped");
     }
 }

@@ -91,6 +91,7 @@
                   <Button fx:id="deleteButton" layoutX="46.0" layoutY="52.0" mnemonicParsing="false" onAction="#handleDeleteButton" text="Delete Task" />
                   <Button fx:id="editButton" layoutX="154.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleEditButton" text="Edit Task" />
                   <Button fx:id="manageButton" layoutX="1410.0" layoutY="33.0" mnemonicParsing="false" onAction="#handleManageButton" text="Manage Team" />
+                  <Button fx:id="viewButton" layoutX="149.0" layoutY="52.0" mnemonicParsing="false" onAction="#handleViewButton" text="View Task" />
                </children>
             </Pane>
          </children>
@@ -120,7 +121,7 @@
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="320.0" />
          </expandableContent>
       </DialogPane>
-      <DialogPane fx:id="createTaskPane1" contentText="" headerText="Hello" layoutX="384.0" layoutY="167.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="433.0" prefWidth="722.0" style="-fx-border-width: 1; -fx-border-style: solid; -fx-border-radius: 5;">
+      <DialogPane fx:id="viewTaskPane" contentText="" headerText="Hello" layoutX="384.0" layoutY="167.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="433.0" prefWidth="722.0" style="-fx-border-width: 1; -fx-border-style: solid; -fx-border-radius: 5; " visible="false">
          <header>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="366.0" prefWidth="722.0">
                <children>
