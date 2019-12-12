@@ -330,4 +330,19 @@ public class HomeController extends BasicController{
         System.out.println("Halted column: "+haltedList.size()+"\n\t"+haltedList.toString());
         System.out.println("Done column: "+doneList.size()+"\n\t"+doneList.toString());
     }
+
+
+    
+    public void handleGoToEditViewButton(ActionEvent event){
+
+    }
+    public void handleSaveViewButton(ActionEvent event){
+
+    }
+    public void handleAssignViewButton(ActionEvent event){
+
+    }
+    public void handleAddCommentViewButton(ActionEvent event){
+
+    }
 }
