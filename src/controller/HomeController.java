@@ -339,8 +339,15 @@ public class HomeController extends BasicController{
     @FXML ListView<Comment> commentsListView;
     public void handleViewButton(ActionEvent event){
         try{
-            viewTaskPane.setVisible(true);
-            mainWindow.setDisable(true);
+            if(selectedTask != null){
+                statusViewText.setText(selectedTask.getStatus());
+                titleViewText.setText(selectedTask.getTitle());
+                difficultyViewText.setText(selectedTask.getDifficulty());
+
+
+                viewTaskPane.setVisible(true);
+                mainWindow.setDisable(true);
+            }
         }catch(Exception e){
             e.printStackTrace();
         }
