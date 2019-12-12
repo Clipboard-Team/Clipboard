@@ -128,9 +128,6 @@ public class HomeController extends BasicController{
             e.printStackTrace();
         }
     }
-    public void handleEditButton(ActionEvent event){
-
-    }
     public void handleDeleteButton(ActionEvent event){
         if(selectedTask != null){
             project.getTeam().getTasks().remove(selectedTask);
@@ -391,6 +388,107 @@ public class HomeController extends BasicController{
             selectedTask.addComment(new Comment(commentViewTextField.getText(), new Date()));
             commentsObservableList = FXCollections.observableArrayList(selectedTask.getComments());
             commentsListView.setItems(commentsObservableList);
+        }
+    }
+
+    @FXML DialogPane editTaskPane;
+    @FXML TextField taskEditTitle, commentEditTextField;
+    @FXML TextArea descriptionEditTextArea;
+    @FXML ComboBox statusEditComboBox, assignedEditComboBox, difficultyEditComboBox;
+    @FXML Button confirmEditButton, cancelEditButton;
+
+    public void handleEditButton(ActionEvent event){
+        try{
+            if(selectedTask != null){
+                taskTypesObservableList = FXCollections.observableArrayList(taskTypes);
+                difficultiesTypesObservableList = FXCollections.observableArrayList(difficulties);
+                membersObservableList = FXCollections.observableArrayList(members);
+
+                statusEditComboBox.setItems(taskTypesObservableList);
+                difficultyEditComboBox.setItems(difficultiesTypesObservableList);
+                assignedEditComboBox.setItems(membersObservableList);
+
+                taskEditTitle.setText(selectedTask.getTitle());
+                statusEditComboBox.setValue(selectedTask.getStatus());
+                difficultyEditComboBox.setValue(selectedTask.getDifficulty());
+                if(selectedTask.getAssignedTo() != null){
+                    assignedEditComboBox.setValue(selectedTask.getAssignedTo());
+                }
+                if(selectedTask.getDescription() != null){
+                    descriptionEditTextArea.setText(selectedTask.getDescription());
+                }
+
+                editTaskPane.setVisible(true);
+                mainWindow.setDisable(true);
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+    public void handleConfirmEditButton(ActionEvent event){
+        try{
+            if(!statusEditComboBox.getSelectionModel().isEmpty() && !taskEditTitle.getText().isEmpty() && !difficultyEditComboBox.getSelectionModel().isEmpty()) {
+                String title = taskEditTitle.getText();
+                String status = statusEditComboBox.getValue().toString();
+                String difficulty = difficultyEditComboBox.getValue().toString();
+                int index = project.getTeam().getTasks().indexOf(selectedTask);
+
+                String currTitle = selectedTask.getTitle();
+                Boolean titleIsValid = false;
+
+                if(selectedTask.getTitle().equalsIgnoreCase(title)){
+                    titleIsValid = true;
+                } else{
+                    for (Task t : project.getTeam().getTasks()) {
+                        if (t.getTitle().equalsIgnoreCase(title)) {
+                            titleIsValid = false;
+                        } else{
+                            titleIsValid = true;
+                        }
+                    }
+                }
+                if (titleIsValid == true) {
+                    selectedTask.setTitle(title);
+                    selectedTask.setStatus(status);
+                    selectedTask.setDifficulty(difficulty);
+                    if (!descriptionEditTextArea.getText().isEmpty()) {
+                        selectedTask.setDescription(descriptionEditTextArea.getText());
+                    }
+                    if (!assignedEditComboBox.getSelectionModel().isEmpty()) {
+                        Member member = null;
+                        for (Member mem : members) {
+                            if (mem.getName().equalsIgnoreCase(assignedEditComboBox.getValue().toString())) {
+                                member = mem;
+                                break;
+                            }
+                        }
+                        selectedTask.setAssignedTo(member);
+                    } else {
+                        selectedTask.setAssignedTo(null);
+                    }
+                    if (!commentEditTextField.getText().isEmpty()) {
+                        selectedTask.addComment(new Comment(commentEditTextField.getText(), new Date()));
+                    }
+                    project.getTeam().getTasks().set(index, selectedTask);
+                    editTaskPane.setVisible(false);
+                    mainWindow.setDisable(false);
+                    renderTasks();
+                } else {
+
+                }
+            } else{
+
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+    public void handleCancelEditButton(ActionEvent event){
+        try{
+            editTaskPane.setVisible(false);
+            mainWindow.setDisable(false);
+        }catch(Exception e){
+            e.printStackTrace();
         }
     }
 }

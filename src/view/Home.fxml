@@ -144,7 +144,32 @@
                   <Text fx:id="statusViewText" layoutX="122.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="nullSt" />
                   <Text fx:id="titleViewText" layoutX="112.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="nullTi" />
                   <Text fx:id="difficultyViewText" layoutX="104.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="nullDi" />
-                  <Text fx:id="assignedViewText"  layoutX="124.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" text="nobody" />
+                  <Text fx:id="assignedViewText" layoutX="124.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" text="nobody" />
+               </children>
+            </AnchorPane>
+         </header>
+         <expandableContent>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="320.0" />
+         </expandableContent>
+      </DialogPane>
+      <DialogPane fx:id="editTaskPane" contentText="" headerText="Hello" layoutX="384.0" layoutY="167.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="433.0" prefWidth="722.0" style="-fx-border-width: 1; -fx-border-style: solid; -fx-border-radius: 5;" visible="false">
+         <header>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="366.0" prefWidth="722.0">
+               <children>
+                  <TextField fx:id="taskEditTitle" layoutX="48.0" layoutY="83.0" promptText="Task Title" />
+                  <TextArea fx:id="descriptionEditTextArea" layoutX="48.0" layoutY="125.0" prefHeight="126.0" prefWidth="626.0" promptText="Task Description" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                  <TextField fx:id="commentEditTextField" layoutX="48.0" layoutY="257.0" promptText="Optional Comment" />
+                  <Text layoutX="294.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Edit Existing Task" textAlignment="CENTER">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Button fx:id="confirmEditButton" layoutX="537.0" layoutY="318.0" mnemonicParsing="false" onAction="#handleConfirmEditButton" text="Confirm" />
+                  <Button fx:id="cancelEditButton" layoutX="617.0" layoutY="318.0" mnemonicParsing="false" onAction="#handleCancelEditButton" text="Cancel" />
+                  <ComboBox fx:id="statusEditComboBox" layoutX="48.0" layoutY="46.0" prefWidth="150.0" promptText="Task Type" />
+                  <ComboBox fx:id="assignedEditComboBox" layoutX="48.0" layoutY="291.0" prefWidth="150.0" promptText="Optional Assign To" />
+                  <ComboBox fx:id="difficultyEditComboBox" layoutX="234.0" layoutY="83.0" prefWidth="150.0" promptText="Difficulty" />
                </children>
             </AnchorPane>
          </header>
