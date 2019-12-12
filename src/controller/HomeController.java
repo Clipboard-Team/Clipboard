@@ -370,7 +370,7 @@ public class HomeController extends BasicController{
     public void handleAssignViewButton(ActionEvent event){
         System.out.println("Edit button tapped");
         selectedTask.setAssignedTo(member);
-        selectedTask.addComment(new Comment("Task Now Assigned To: "+selectedTask.getAssignedTo().getName(), new Date()));
+        selectedTask.addComment(new Comment("Task now assigned to "+selectedTask.getAssignedTo().getName(), new Date()));
         commentsObservableList = FXCollections.observableArrayList(selectedTask.getComments());
         commentsListView.setItems(commentsObservableList);
     }
