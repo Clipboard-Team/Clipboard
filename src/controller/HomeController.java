@@ -300,23 +300,25 @@ public class HomeController extends BasicController{
             index = listView.getSelectionModel().getSelectedIndex();
             selectedTask = listView.getSelectionModel().getSelectedItem();
             try{
-                if(!selectedTask.getStatus().equalsIgnoreCase("To Do")){
-                    toDoListView.getSelectionModel().clearSelection();
+                if(selectedTask != null){
+                    if(!selectedTask.getStatus().equalsIgnoreCase("To Do")){
+                        toDoListView.getSelectionModel().clearSelection();
+                    }
+                    if(!selectedTask.getStatus().equalsIgnoreCase("In Progress")){
+                        inProgressListView.getSelectionModel().clearSelection();
+                    }
+                    if(!selectedTask.getStatus().equalsIgnoreCase("Halted")){
+                        haltedListView.getSelectionModel().clearSelection();
+                    }
+                    if(!selectedTask.getStatus().equalsIgnoreCase("Done")){
+                        doneListView.getSelectionModel().clearSelection();
+                    }
                 }
-                if(!selectedTask.getStatus().equalsIgnoreCase("In Progress")){
-                    inProgressListView.getSelectionModel().clearSelection();
-                }
-                if(!selectedTask.getStatus().equalsIgnoreCase("Halted")){
-                    haltedListView.getSelectionModel().clearSelection();
-                }
-                if(!selectedTask.getStatus().equalsIgnoreCase("Done")){
-                    doneListView.getSelectionModel().clearSelection();
-                }
+                System.out.println(selectedTask.getStatus()+": "+index+", "+selectedTask.getTitle());
             } catch(Exception e){
                 System.out.println("Caught");
                 //e.printStackTrace();
             }
-            System.out.println(selectedTask.getStatus()+": "+index+", "+selectedTask.getTitle());
         }
         catch(Exception e){
             System.out.println("cellWasSelected() -> Caught");
