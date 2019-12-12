@@ -177,7 +177,43 @@ public class HomeController extends BasicController{
         }
     }
     public void handleRightButton(ActionEvent event){
+        if(selectedTask != null){
+            switch(selectedTask.getStatus()){
+                case "To Do":
+                    selectedTask.setStatus("In Progress");
+                    inProgressList.add(selectedTask);
+                    inProgressObservableList = FXCollections.observableArrayList(inProgressList);
+                    inProgressListView.setItems(inProgressObservableList);
 
+                    toDoList.remove(selectedTask);
+                    toDoObservableList = FXCollections.observableArrayList(toDoList);
+                    toDoListView.setItems(toDoObservableList);
+                    break;
+                case "In Progress":
+                    selectedTask.setStatus("Halted");
+                    haltedList.add(selectedTask);
+                    haltedObservableList = FXCollections.observableArrayList(haltedList);
+                    haltedListView.setItems(haltedObservableList);
+
+                    inProgressList.remove(selectedTask);
+                    inProgressObservableList = FXCollections.observableArrayList(inProgressList);
+                    inProgressListView.setItems(inProgressObservableList);
+                    break;
+                case "Halted":
+                    selectedTask.setStatus("Done");
+                    doneList.add(selectedTask);
+                    doneObservableList = FXCollections.observableArrayList(doneList);
+                    doneListView.setItems(doneObservableList);
+
+                    haltedList.remove(selectedTask);
+                    haltedObservableList = FXCollections.observableArrayList(haltedList);
+                    haltedListView.setItems(haltedObservableList);
+                    break;
+                case "Done":
+                    System.out.println("Cannot move right any further.");
+                    break;
+            }
+        }
     }
     public void handleManageButton(ActionEvent event){
 
