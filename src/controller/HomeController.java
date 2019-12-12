@@ -131,12 +131,34 @@ public class HomeController extends BasicController{
 
     }
     public void handleDeleteButton(ActionEvent event){
+        if(selectedTask != null){
+            project.getTeam().getTasks().remove(selectedTask);
 
+            switch(selectedTask.getStatus()){
+                case "To Do":
+                    toDoList.remove(selectedTask);
+                    toDoObservableList = FXCollections.observableArrayList(toDoList);
+                    toDoListView.setItems(toDoObservableList);
+                    break;
+                case "In Progress":
+                    inProgressList.remove(selectedTask);
+                    inProgressObservableList = FXCollections.observableArrayList(inProgressList);
+                    inProgressListView.setItems(inProgressObservableList);
+                    break;
+                case "Halted":
+                    haltedList.remove(selectedTask);
+                    haltedObservableList = FXCollections.observableArrayList(haltedList);
+                    haltedListView.setItems(haltedObservableList);
+                    break;
+                case "Done":
+                    doneList.remove(selectedTask);
+                    doneObservableList = FXCollections.observableArrayList(doneList);
+                    doneListView.setItems(doneObservableList);
+                    break;
+            }
+            printAllTasks();
+        }
     }
-    /*
-    * TODO: very buggy left task drag action,
-    *   check null in handleLeftButton and cellWasSelected function
-    * */
     public void handleLeftButton(ActionEvent event){
         if(selectedTask != null){
             switch(selectedTask.getStatus()){
@@ -233,6 +255,7 @@ public class HomeController extends BasicController{
                 String status = statusComboBox.getValue().toString();
                 String difficulty = difficultyComboBox.getValue().toString();
                 Task t = new Task(title, status, difficulty);
+                t.setTitle(title);
                 if(!project.getTeam().taskExists(t)){
                     System.out.println("Valid input");
                     if(!descriptionTextArea.getText().isEmpty()){
@@ -292,11 +315,19 @@ public class HomeController extends BasicController{
                 System.out.println("Caught");
                 //e.printStackTrace();
             }
-            //System.out.println(selectedTask.getStatus()+": "+index+", "+selectedTask.getTitle());
+            System.out.println(selectedTask.getStatus()+": "+index+", "+selectedTask.getTitle());
         }
         catch(Exception e){
             System.out.println("cellWasSelected() -> Caught");
             //e.printStackTrace();
         }
+    }
+
+    public void printAllTasks(){
+        System.out.println("Current total tasks: "+project.getTeam().getTasks().size()+"\n\t"+project.getTeam().toString());
+        System.out.println("To Do column: "+toDoList.size()+"\n\t"+toDoList.toString());
+        System.out.println("In Progress column: "+inProgressList.size()+"\n\t"+inProgressList.toString());
+        System.out.println("Halted column: "+haltedList.size()+"\n\t"+haltedList.toString());
+        System.out.println("Done column: "+doneList.size()+"\n\t"+doneList.toString());
     }
 }

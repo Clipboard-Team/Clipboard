@@ -75,4 +75,13 @@ public class Task {
         }
     }
 
+    public boolean equals(Task t){
+
+        System.out.println("Comparing: "+this+" with: "+t);
+        if(t.getTitle().equalsIgnoreCase(this.getTitle())){
+            return true;
+        }
+        return false;
+    }
+
 }
