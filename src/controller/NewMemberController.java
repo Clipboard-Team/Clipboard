@@ -1,12 +1,12 @@
 package controller;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import model.Lead;
 import model.Member;
 import model.Project;
@@ -19,6 +19,7 @@ public class NewMemberController extends BasicController{
     @FXML TextField username;
     @FXML ListView<Member> listView;
     @FXML Button backButton, addButton, finalizeButton;
+    @FXML RadioButton chk, adminRadioButton, leadRadioButton;
 
     public void handleBackButton(ActionEvent event){
         BasicController controller = changeScreen("../view/NewAdmin.fxml", event, new NewAdminController());
@@ -31,12 +32,18 @@ public class NewMemberController extends BasicController{
     public void handleAddButton(ActionEvent event){
         if(!username.getText().isEmpty() &&
                 !project.getTeam().memberExists(
-                        new Member(username.getText(), project.getTeam()))){
-            Member mem = new Member(username.getText(), project.getTeam());
+                        new Member(username.getText(), project.getTeam(), chk.getText()))){
+            Member mem = new Member(username.getText(), project.getTeam(), chk.getText());
             project.getTeam().addMember(mem);
             observableList.add(mem);
             listView.setItems(observableList);
         }
+    }
+    public void handleAdminRadioButton(ActionEvent event){
+        //leadRadioButton.setSelected(false);
+    }
+    public void handleLeadRadioButton(ActionEvent event){
+        //adminRadioButton.setSelected(false);
     }
     public void start(Project project){
         this.project = project;
@@ -44,6 +51,20 @@ public class NewMemberController extends BasicController{
         listView.setItems(observableList);
         listView.getSelectionModel().selectedItemProperty().addListener((listObservable,oldValues,newValues) -> cellWasSelected());
         listView.getSelectionModel().select(0);
+
+        final ToggleGroup group = new ToggleGroup();
+        adminRadioButton.setSelected(true);
+        adminRadioButton.setToggleGroup(group);
+        leadRadioButton.setToggleGroup(group);
+        group.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
+            @Override
+            public void changed(ObservableValue<? extends Toggle> ov, Toggle t, Toggle t1) {
+
+                chk = (RadioButton)t1.getToggleGroup().getSelectedToggle(); // Cast object to radio button
+                System.out.println("Selected Radio Button - "+chk.getText());
+
+            }
+        });
     }
     public void cellWasSelected(){ // functions provided when a cell is selected in list
         try

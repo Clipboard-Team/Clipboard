@@ -7,9 +7,10 @@ public class Member {
     Team team;
     String role;
 
-    public Member(String name, Team team){
+    public Member(String name, Team team, String role){
         this.name = name;
         this.team = team;
+        this.role = role;
     }
 
     public void setName(String name){
