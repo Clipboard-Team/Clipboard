@@ -17,7 +17,7 @@ public class NewAdminController extends BasicController {
     }
     public void handleNextButton(ActionEvent event){
         if(!username.getText().isEmpty()){
-            project.getTeam().addMember(new Member(username.getText(), project.getTeam(), "admin"));
+            project.getTeam().addMember(new Member(username.getText(), project.getTeam(), "Admin"));
             BasicController controller = changeScreen("../view/NewMember.fxml", event, new NewMemberController());
             controller.start(project);
         }

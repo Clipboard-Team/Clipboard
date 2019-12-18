@@ -75,6 +75,7 @@ public class HomeController extends BasicController{
         this.member = member;
         projectTitle.setText(project.getTitle());
         username.setText(member.getName());
+        role.setText(member.getRole());
         renderTasks();
         //role.setText(member.getRole());
     }
