@@ -1,7 +1,9 @@
 package model;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import static java.time.temporal.ChronoUnit.DAYS;
 
 public class Task {
     String title;
@@ -12,6 +14,7 @@ public class Task {
     Date startDate;
     Date latestUpdateDate;
     Member assignedTo;
+    LocalDate dueDate;
 
     void assign_to_member(Member member){
 
@@ -62,17 +65,27 @@ public class Task {
     public void setAssignedTo(Member member){
         this.assignedTo = member;
     }
-
     public Member getAssignedTo(){
         return this.assignedTo;
+    }
+
+    public void setDueDate(LocalDate dueDate){
+        this.dueDate = dueDate;
+    }
+    public LocalDate getDueDate(){
+        return this.dueDate;
     }
 
     public String toString(){
         if(this.assignedTo != null){
             return this.getTitle()+" ("+this.getDifficulty()+") : "+this.getAssignedTo();
-        }else{
-            return this.getTitle()+" ("+this.getDifficulty()+")";
+        }else if(dueDate != null){
+                long daysLeft = DAYS.between(LocalDate.now(), dueDate);
+                return this.getTitle()+" ("+this.getDifficulty()+") "+daysLeft+" days left";
+
         }
+
+        return this.getTitle()+" ("+this.getDifficulty()+")";
     }
 
     public boolean equals(Task t){

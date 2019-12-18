@@ -44,6 +44,7 @@ public class HomeController extends BasicController{
     @FXML ComboBox statusComboBox, assignedComboBox, difficultyComboBox;
     @FXML Button confirmButton, cancelButton;
     @FXML DialogPane createTaskPane;
+    @FXML DatePicker dueDatePicker;
     List<String> taskTypes = new ArrayList<>();
     ObservableList<String> taskTypesObservableList;
     List<String> difficulties = new ArrayList<>();
@@ -273,6 +274,10 @@ public class HomeController extends BasicController{
                     if(!commentTextField.getText().isEmpty()){
                         t.addComment(new Comment(commentTextField.getText(), new Date()));
                     }
+                    if(dueDatePicker.getValue() != null){
+                        System.out.println("has date value: "+dueDatePicker.getValue());
+                        t.setDueDate(dueDatePicker.getValue());
+                    }
                     project.getTeam().addTask(t);
                     System.out.println("Adding task to project");
                     System.out.println("Task: "+t.getTitle()+" "+t.getStatus()+" "+t.getDifficulty()
@@ -397,6 +402,7 @@ public class HomeController extends BasicController{
     @FXML TextArea descriptionEditTextArea;
     @FXML ComboBox statusEditComboBox, assignedEditComboBox, difficultyEditComboBox;
     @FXML Button confirmEditButton, cancelEditButton;
+    @FXML DatePicker dueEditDatePicker;
 
     public void handleEditButton(ActionEvent event){
         try{
@@ -417,6 +423,12 @@ public class HomeController extends BasicController{
                 }
                 if(selectedTask.getDescription() != null){
                     descriptionEditTextArea.setText(selectedTask.getDescription());
+                }
+                if(selectedTask.getDueDate() != null){
+                    dueEditDatePicker.setValue(selectedTask.getDueDate());
+                } else{
+                    System.out.println("reset");
+                    dueEditDatePicker.setValue(null);
                 }
 
                 editTaskPane.setVisible(true);
@@ -469,6 +481,13 @@ public class HomeController extends BasicController{
                     }
                     if (!commentEditTextField.getText().isEmpty()) {
                         selectedTask.addComment(new Comment(commentEditTextField.getText(), new Date()));
+                    }
+                    if(dueEditDatePicker.getValue() != null){
+                        System.out.println("has edit date value: "+dueEditDatePicker.getValue());
+                        selectedTask.setDueDate(dueEditDatePicker.getValue());
+                    } else{
+                        System.out.println("setting back to null due date");
+                        selectedTask.setDueDate(null);
                     }
                     project.getTeam().getTasks().set(index, selectedTask);
                     editTaskPane.setVisible(false);
