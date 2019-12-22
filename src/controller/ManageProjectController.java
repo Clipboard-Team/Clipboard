@@ -117,9 +117,9 @@ public class ManageProjectController extends BasicController {
         }
         if(startDatePicker.getValue() != null){
             System.out.println("Filtering with start date: ");
-            if(filteredList.size() == 0){
+            if(filteredList.size() == 0 && boxesChecked.size() == 0){
                 System.out.println("\tNo checkbox filters were used, initializing filterList for start");
-                filteredList = project.getTeam().getTasks();
+                filteredList.addAll(project.getTeam().getTasks());
             }
             Iterator<Task> i = filteredList.iterator();
             Date currFilter = java.sql.Date.valueOf(startDatePicker.getValue());
@@ -138,9 +138,9 @@ public class ManageProjectController extends BasicController {
         }
         if(endDatePicker.getValue() != null){
             System.out.println("Filtering with end date: ");
-            if(filteredList.size() == 0){
+            if(filteredList.size() == 0 && startDatePicker.getValue() == null){
                 System.out.println("\tNo checkbox filters were used, initializing filterList for end");
-                filteredList = project.getTeam().getTasks();
+                filteredList.addAll(project.getTeam().getTasks());
             }
             Iterator<Task> i = filteredList.iterator();
             Date currFilter = java.sql.Date.valueOf(endDatePicker.getValue());
@@ -148,7 +148,7 @@ public class ManageProjectController extends BasicController {
                 Task t = i.next();
                 System.out.println("Comparing: "+t.getDueDate()+", with: "+currFilter);
                 if(t.getDueDate() != null){
-                    if(t.getDueDate().before(currFilter)){
+                    if(t.getDueDate().after(currFilter)){
                         // delete
                         System.out.println("Removing");
                         i.remove();
