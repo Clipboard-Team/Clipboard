@@ -76,16 +76,16 @@
                </children></Pane>
             <Pane prefHeight="800.0" prefWidth="1200.0">
                <children>
-                  <TableView layoutX="100.0" layoutY="89.0" prefHeight="600.0" prefWidth="1000.0">
+                  <TableView fx:id="tasksTableView" layoutX="100.0" layoutY="89.0" prefHeight="600.0" prefWidth="1000.0">
                     <columns>
-                      <TableColumn prefWidth="100.0" text="Start Date" />
-                      <TableColumn prefWidth="100.0" text="End Date" />
-                        <TableColumn prefWidth="100.0" text="Status" />
-                        <TableColumn prefWidth="100.0" text="Difficulty" />
-                        <TableColumn prefWidth="100.0" text="Assigned By" />
-                        <TableColumn prefWidth="175.0" text="Title" />
-                        <TableColumn prefWidth="200.0" text="Description" />
-                        <TableColumn prefWidth="124.0" text="Total Comments" />
+                      <TableColumn fx:id="startCol" prefWidth="100.0" text="Start Date" />
+                      <TableColumn fx:id="dueCol" prefWidth="100.0" text="End Date" />
+                        <TableColumn fx:id="statusCol" prefWidth="100.0" text="Status" />
+                        <TableColumn fx:id="difficultyCol" prefWidth="100.0" text="Difficulty" />
+                        <TableColumn fx:id="assignedCol" prefWidth="100.0" text="Assigned By" />
+                        <TableColumn fx:id="titleCol" prefWidth="175.0" text="Title" />
+                        <TableColumn fx:id="descriptionCol" prefWidth="200.0" text="Description" />
+                        <TableColumn fx:id="totalCommentsCol" prefWidth="124.0" text="Total Comments" />
                     </columns>
                   </TableView>
                   <TextField fx:id="searchTextField" layoutX="876.0" layoutY="54.0" prefHeight="27.0" prefWidth="222.0" promptText="Search" />

@@ -11,8 +11,8 @@ public class Task {
     private String difficulty;
     private String description;
     private List<Comment> comments = new ArrayList<>();
+    private Integer totalComments = comments.size();
     private Date startDate;
-    Date latestUpdateDate;
     private Member assignedTo;
     private Date dueDate;
 
@@ -26,11 +26,16 @@ public class Task {
     public void addComment(Comment comment){
         this.comments.add(comment);
     }
-
     public List<Comment> getComments(){
         return this.comments;
     }
 
+    public void setTotalComments(Integer totalComments) {
+        this.totalComments = totalComments;
+    }
+    public Integer getTotalComments() {
+        return totalComments;
+    }
     public void setTitle(String title){
         this.title = title;
     }

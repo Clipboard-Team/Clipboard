@@ -6,6 +6,7 @@ import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
 import model.Member;
 import model.Project;
@@ -26,6 +27,12 @@ public class ManageProjectController extends BasicController {
             statusDoneCheckBox, diffEasyCheckBox, diffMediumCheckBox, diffHardCheckBox,
             diffUnknownCheckBox;
     @FXML ComboBox typeComboBox, directionComboBox;
+    ObservableList<Task> tasksObservableList;
+    @FXML TableView<Task> tasksTableView;
+    @FXML TableColumn<Task, Date> startCol, dueCol;
+    @FXML TableColumn<Task, String> statusCol, difficultyCol, assignedCol, titleCol,
+            descriptionCol;
+    @FXML TableColumn<Task, Integer> totalCommentsCol;
     private Project project = null;
     private Member member = null;
 
@@ -43,6 +50,19 @@ public class ManageProjectController extends BasicController {
         addActionToCheckBox(diffMediumCheckBox);
         addActionToCheckBox(diffHardCheckBox);
         addActionToCheckBox(diffUnknownCheckBox);
+
+        startCol.setCellValueFactory(new PropertyValueFactory<>("startDate"));
+        dueCol.setCellValueFactory(new PropertyValueFactory<>("dueDate"));
+        statusCol.setCellValueFactory(new PropertyValueFactory<>("status"));
+        difficultyCol.setCellValueFactory(new PropertyValueFactory<>("difficulty"));
+        assignedCol.setCellValueFactory(new PropertyValueFactory<>("assignedTo"));
+        titleCol.setCellValueFactory(new PropertyValueFactory<>("title"));
+        descriptionCol.setCellValueFactory(new PropertyValueFactory<>("description"));
+        totalCommentsCol.setCellValueFactory(new PropertyValueFactory<>("totalComments"));
+
+        tasksTableView.getColumns().setAll(startCol, dueCol, statusCol, difficultyCol, assignedCol, titleCol, descriptionCol, totalCommentsCol);
+        tasksObservableList = FXCollections.observableList(project.getTeam().getTasks());
+        tasksTableView.setItems(tasksObservableList);
     }
 
     void addActionToCheckBox(CheckBox ch){
