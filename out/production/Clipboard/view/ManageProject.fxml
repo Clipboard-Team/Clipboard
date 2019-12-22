@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<Pane prefHeight="800.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ManageProjectController">
+   <children>
+      <HBox layoutX="1.0" layoutY="3.0" prefHeight="800.0" prefWidth="1600.0">
+         <children>
+            <Pane prefHeight="800.0" prefWidth="400.0">
+               <children>
+                  <Text layoutX="14.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Manage Project">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="13.0" layoutY="214.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Filter Tasks">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="13.0" layoutY="617.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sort Tasks">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="31.0" layoutY="246.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Status">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <ComboBox layoutX="53.0" layoutY="638.0" prefWidth="150.0" promptText="Type" />
+                  <ComboBox layoutX="53.0" layoutY="686.0" prefWidth="150.0" promptText="Direction" />
+                  <Button layoutX="14.0" layoutY="759.0" mnemonicParsing="false" text="Logout" />
+                  <Button layoutX="82.0" layoutY="759.0" mnemonicParsing="false" text="Home" />
+                  <Button layoutX="15.0" layoutY="62.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="370.0" text="Rename Project" />
+                  <Button layoutX="15.0" layoutY="91.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="370.0" text="Rename Team" />
+                  <Button layoutX="15.0" layoutY="120.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="370.0" text="Members" />
+                  <Button layoutX="15.0" layoutY="149.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="370.0" text="View Analytics" />
+                  <CheckBox layoutX="44.0" layoutY="255.0" mnemonicParsing="false" text="To Do" />
+                  <CheckBox layoutX="44.0" layoutY="276.0" mnemonicParsing="false" text="In Progress" />
+                  <CheckBox layoutX="44.0" layoutY="297.0" mnemonicParsing="false" text="Halted" />
+                  <CheckBox layoutX="44.0" layoutY="318.0" mnemonicParsing="false" text="Done" />
+                  <Text layoutX="31.0" layoutY="365.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Difficulty">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <CheckBox layoutX="44.0" layoutY="374.0" mnemonicParsing="false" text="Easy" />
+                  <CheckBox layoutX="44.0" layoutY="395.0" mnemonicParsing="false" text="Medium" />
+                  <CheckBox layoutX="44.0" layoutY="416.0" mnemonicParsing="false" text="Hard" />
+                  <CheckBox layoutX="44.0" layoutY="437.0" mnemonicParsing="false" text="Unknown" />
+                  <Text layoutX="31.0" layoutY="489.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Start Date">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <DatePicker layoutX="53.0" layoutY="494.0" prefHeight="18.0" prefWidth="187.0" promptText="Start Date" />
+                  <Text layoutX="31.0" layoutY="550.0" strokeType="OUTSIDE" strokeWidth="0.0" text="End Date">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <DatePicker layoutX="53.0" layoutY="555.0" prefHeight="18.0" prefWidth="187.0" promptText="End Date" />
+               </children></Pane>
+            <Pane prefHeight="800.0" prefWidth="1200.0">
+               <children>
+                  <TableView layoutX="100.0" layoutY="89.0" prefHeight="600.0" prefWidth="1000.0">
+                    <columns>
+                      <TableColumn prefWidth="100.0" text="Start Date" />
+                      <TableColumn prefWidth="100.0" text="End Date" />
+                        <TableColumn prefWidth="100.0" text="Status" />
+                        <TableColumn prefWidth="100.0" text="Difficulty" />
+                        <TableColumn prefWidth="100.0" text="Assigned By" />
+                        <TableColumn prefWidth="175.0" text="Title" />
+                        <TableColumn prefWidth="200.0" text="Description" />
+                        <TableColumn prefWidth="124.0" text="Total Comments" />
+                    </columns>
+                  </TableView>
+                  <TextField layoutX="938.0" layoutY="54.0" promptText="Search" />
+               </children></Pane>
+         </children>
+      </HBox>
+   </children>
+</Pane>
