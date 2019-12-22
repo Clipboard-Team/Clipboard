@@ -147,13 +147,17 @@ public class ManageProjectController extends BasicController {
             while (i.hasNext()) {
                 Task t = i.next();
                 System.out.println("Comparing: "+t.getDueDate()+", with: "+currFilter);
-                if(t.getDueDate().before(currFilter)){
-                    // delete
-                    System.out.println("Removing");
-                    i.remove();
+                if(t.getDueDate() != null){
+                    if(t.getDueDate().before(currFilter)){
+                        // delete
+                        System.out.println("Removing");
+                        i.remove();
+                    } else{
+                        // keep
+                        System.out.println("Keeping");
+                    }
                 } else{
-                    // keep
-                    System.out.println("Keeping");
+                    System.out.println("Keeping, this one doesnt have due date");
                 }
             }
         }
