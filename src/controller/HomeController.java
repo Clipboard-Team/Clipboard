@@ -238,7 +238,8 @@ public class HomeController extends BasicController{
         }
     }
     public void handleManageButton(ActionEvent event){
-
+        BasicController controller = changeScreen("../view/ManageProject.fxml", event, new ManageProjectController());
+        controller.start(project, member);
     }
     public void handleCancelButton(ActionEvent event){
         try{

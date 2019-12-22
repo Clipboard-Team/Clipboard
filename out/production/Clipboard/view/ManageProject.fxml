@@ -40,12 +40,12 @@
                   </Text>
                   <ComboBox layoutX="53.0" layoutY="638.0" prefWidth="150.0" promptText="Type" />
                   <ComboBox layoutX="53.0" layoutY="686.0" prefWidth="150.0" promptText="Direction" />
-                  <Button layoutX="14.0" layoutY="759.0" mnemonicParsing="false" text="Logout" />
-                  <Button layoutX="82.0" layoutY="759.0" mnemonicParsing="false" text="Home" />
-                  <Button layoutX="15.0" layoutY="62.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="370.0" text="Rename Project" />
-                  <Button layoutX="15.0" layoutY="91.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="370.0" text="Rename Team" />
-                  <Button layoutX="15.0" layoutY="120.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="370.0" text="Members" />
-                  <Button layoutX="15.0" layoutY="149.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="370.0" text="View Analytics" />
+                  <Button fx:id="logoutButton" onAction="#handleLogoutButton" layoutX="274.0" layoutY="759.0" mnemonicParsing="false" text="Logout" />
+                  <Button fx:id="homeButton" onAction="#handleHomeButton" layoutX="342.0" layoutY="759.0" mnemonicParsing="false" text="Home" />
+                  <Button fx:id="renameProjectButton" onAction="#handleRenameProjectButton" layoutX="15.0" layoutY="62.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="370.0" text="Rename Project" />
+                  <Button fx:id="renameTeamButton" onAction="#handleRenameTeamButton" layoutX="15.0" layoutY="91.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="370.0" text="Rename Team" />
+                  <Button fx:id="membersButton" onAction="#handleMembersButton" layoutX="15.0" layoutY="120.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="370.0" text="Members" />
+                  <Button fx:id="viewAnalyticsButton" onAction="#handleViewAnalyticsButton" layoutX="15.0" layoutY="149.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="370.0" text="View Analytics" />
                   <CheckBox layoutX="44.0" layoutY="255.0" mnemonicParsing="false" text="To Do" />
                   <CheckBox layoutX="44.0" layoutY="276.0" mnemonicParsing="false" text="In Progress" />
                   <CheckBox layoutX="44.0" layoutY="297.0" mnemonicParsing="false" text="Halted" />
@@ -64,13 +64,15 @@
                         <Font size="18.0" />
                      </font>
                   </Text>
-                  <DatePicker layoutX="53.0" layoutY="494.0" prefHeight="18.0" prefWidth="187.0" promptText="Start Date" />
+                  <DatePicker fx:id="startDatePicker" layoutX="53.0" layoutY="494.0" prefHeight="18.0" prefWidth="187.0" promptText="Start Date" />
                   <Text layoutX="31.0" layoutY="550.0" strokeType="OUTSIDE" strokeWidth="0.0" text="End Date">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Text>
-                  <DatePicker layoutX="53.0" layoutY="555.0" prefHeight="18.0" prefWidth="187.0" promptText="End Date" />
+                  <DatePicker fx:id="endDatePicker" layoutX="53.0" layoutY="555.0" prefHeight="18.0" prefWidth="187.0" promptText="End Date" />
+                  <Button fx:id="updateButton" onAction="#handleUpdateButton" layoutX="15.0" layoutY="759.0" mnemonicParsing="false" text="Update" />
+                  <Button fx:id="clearButton" onAction="#handleClearButton" layoutX="83.0" layoutY="759.0" mnemonicParsing="false" text="Clear" />
                </children></Pane>
             <Pane prefHeight="800.0" prefWidth="1200.0">
                <children>
@@ -86,7 +88,17 @@
                         <TableColumn prefWidth="124.0" text="Total Comments" />
                     </columns>
                   </TableView>
-                  <TextField layoutX="938.0" layoutY="54.0" promptText="Search" />
+                  <TextField fx:id="searchTextField" layoutX="876.0" layoutY="54.0" prefHeight="27.0" prefWidth="222.0" promptText="Search" />
+                  <Text fx:id="projectText" layoutX="101.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Project Name">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="teamText" fill="#808080" layoutX="102.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Team Name">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
                </children></Pane>
          </children>
       </HBox>
