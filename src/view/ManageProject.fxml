@@ -38,8 +38,8 @@
                         <Font size="18.0" />
                      </font>
                   </Text>
-                  <ComboBox layoutX="53.0" layoutY="638.0" prefWidth="150.0" promptText="Type" />
-                  <ComboBox layoutX="53.0" layoutY="686.0" prefWidth="150.0" promptText="Direction" />
+                  <ComboBox fx:id="typeComboBox" layoutX="53.0" layoutY="638.0" prefWidth="150.0" promptText="Type" />
+                  <ComboBox fx:id="directionComboBox" layoutX="53.0" layoutY="686.0" prefWidth="150.0" promptText="Direction" />
                   <Button fx:id="logoutButton" onAction="#handleLogoutButton" layoutX="274.0" layoutY="759.0" mnemonicParsing="false" text="Logout" />
                   <Button fx:id="homeButton" onAction="#handleHomeButton" layoutX="342.0" layoutY="759.0" mnemonicParsing="false" text="Home" />
                   <Button fx:id="renameProjectButton" onAction="#handleRenameProjectButton" layoutX="15.0" layoutY="62.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="370.0" text="Rename Project" />

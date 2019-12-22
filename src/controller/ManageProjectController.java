@@ -5,10 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.text.Text;
 import model.Member;
 import model.Project;
@@ -30,6 +27,7 @@ public class ManageProjectController extends BasicController {
     @FXML CheckBox statusToDoCheckBox, statusInProgressCheckBox, statusHaltedCheckBox,
             statusDoneCheckBox, diffEasyCheckBox, diffMediumCheckBox, diffHardCheckBox,
             diffUnknownCheckBox;
+    @FXML ComboBox typeComboBox, directionComboBox;
     private Project project = null;
     private Member member = null;
 
@@ -106,6 +104,7 @@ public class ManageProjectController extends BasicController {
         //tableView.setItems(tasks);
 
         if(boxesChecked.size()!=0){
+            System.out.println("Filtering with checkboxes");
             List<Predicate<Task>> filtersCollection = new ArrayList<>();
             List<Task> filteredList = new ArrayList<>();
             for(CheckBox ch : boxesChecked){
@@ -116,7 +115,19 @@ public class ManageProjectController extends BasicController {
                     filtersCollection.stream().reduce(Predicate::or).orElse(t->true)
             )
             .forEach(filteredList::add);
-            System.out.println("Filtered List: "+filteredList.toString());
+            System.out.println("Semi Filtered List: "+filteredList.toString());
+        }
+        if(startDatePicker.getValue() != null){
+            System.out.println("Filtering with start date: ");
+
+        }
+        if(startDatePicker.getValue() != null){
+            System.out.println("Filtering with end date: ");
+
+        }
+        if(typeComboBox.getValue() != null && directionComboBox.getValue() != null){
+            System.out.println("Sorting with type: "+typeComboBox.getValue()+", and: "+directionComboBox.getValue());
+
         }
     }
     public void handleClearButton(ActionEvent event){

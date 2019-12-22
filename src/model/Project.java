@@ -1,9 +1,11 @@
 package model;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 public class Project {
+    public static SimpleDateFormat dateFormatter = new SimpleDateFormat("dd-M-yyyy hh:mm");
     private Team team;
     private String title;
     private String description;

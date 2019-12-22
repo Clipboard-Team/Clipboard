@@ -6,24 +6,21 @@ import java.util.List;
 import static java.time.temporal.ChronoUnit.DAYS;
 
 public class Task {
-    String title;
-    String status;
-    String difficulty;
-    String description;
-    List<Comment> comments = new ArrayList<>();
-    Date startDate;
+    private String title;
+    private String status;
+    private String difficulty;
+    private String description;
+    private List<Comment> comments = new ArrayList<>();
+    private Date startDate;
     Date latestUpdateDate;
-    Member assignedTo;
-    LocalDate dueDate;
-
-    void assign_to_member(Member member){
-
-    }
+    private Member assignedTo;
+    private Date dueDate;
 
     public Task(String title, String status, String difficulty){
         this.title = title;
         this.status = status;
         this.difficulty = difficulty;
+        this.startDate = java.sql.Date.valueOf(LocalDate.now());
     }
 
     public void addComment(Comment comment){
@@ -69,10 +66,17 @@ public class Task {
         return this.assignedTo;
     }
 
-    public void setDueDate(LocalDate dueDate){
-        this.dueDate = dueDate;
+    public void setStartDate(LocalDate startDate){
+        this.startDate = java.sql.Date.valueOf(startDate);
     }
-    public LocalDate getDueDate(){
+    public Date getStartDate(){
+        return this.startDate;
+    }
+
+    public void setDueDate(LocalDate dueDate){
+        this.dueDate = java.sql.Date.valueOf(dueDate);
+    }
+    public Date getDueDate(){
         return this.dueDate;
     }
 
@@ -80,7 +84,7 @@ public class Task {
         if(this.assignedTo != null){
             return this.getTitle()+" ("+this.getDifficulty()+") : "+this.getAssignedTo();
         }else if(dueDate != null){
-                long daysLeft = DAYS.between(LocalDate.now(), dueDate);
+                long daysLeft = DAYS.between(LocalDate.now(), new java.sql.Date(dueDate.getTime()).toLocalDate());
                 return this.getTitle()+" ("+this.getDifficulty()+") "+daysLeft+" days left";
 
         }

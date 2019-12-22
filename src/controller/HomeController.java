@@ -340,7 +340,7 @@ public class HomeController extends BasicController{
 
 
     @FXML DialogPane viewTaskPane;
-    @FXML Text statusViewText, titleViewText, difficultyViewText, assignedViewText;
+    @FXML Text statusViewText, titleViewText, difficultyViewText, assignedViewText, startDateText;
     @FXML TextField commentViewTextField;
     @FXML Button goToEditViewButton, saveViewButton, assignViewButton, addCommentViewButton;
     @FXML ListView<Comment> commentsListView;
@@ -353,6 +353,7 @@ public class HomeController extends BasicController{
                 difficultyViewText.setText(selectedTask.getDifficulty());
                 commentsObservableList = FXCollections.observableArrayList(selectedTask.getComments());
                 commentsListView.setItems(commentsObservableList);
+                startDateText.setText(Project.dateFormatter.format(selectedTask.getStartDate()));
                 if(selectedTask.getAssignedTo() != null){
                     assignedViewText.setText(selectedTask.getAssignedTo().getName());
                 }
@@ -426,7 +427,7 @@ public class HomeController extends BasicController{
                     descriptionEditTextArea.setText(selectedTask.getDescription());
                 }
                 if(selectedTask.getDueDate() != null){
-                    dueEditDatePicker.setValue(selectedTask.getDueDate());
+                    dueEditDatePicker.setValue(new java.sql.Date(selectedTask.getDueDate().getTime()).toLocalDate());
                 } else{
                     System.out.println("reset");
                     dueEditDatePicker.setValue(null);
