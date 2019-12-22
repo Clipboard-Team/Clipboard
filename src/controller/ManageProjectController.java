@@ -23,7 +23,9 @@ public class ManageProjectController extends BasicController {
         this.project = project;
         this.member = member;
         printCurrentState();
+        refreshScreen();
     }
+
 
     private void printCurrentState(){
         System.out.println("Printing Current State of ManageProjectController: ");
@@ -37,7 +39,10 @@ public class ManageProjectController extends BasicController {
             System.out.println("\tTask: "+t.toString());
         }
     }
-
+    private void refreshScreen(){
+        this.projectText.setText(project.getTitle());
+        this.teamText.setText(project.getTeam().getTitle());
+    }
     public void handleRenameProjectButton(ActionEvent event){
         System.out.println("Rename Project Tapped");
     }
