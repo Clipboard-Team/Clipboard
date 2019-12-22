@@ -20,7 +20,7 @@ public class Task {
         this.title = title;
         this.status = status;
         this.difficulty = difficulty;
-        this.startDate = java.sql.Date.valueOf(LocalDate.now());
+        this.startDate = new Date();
     }
 
     public void addComment(Comment comment){
@@ -86,7 +86,6 @@ public class Task {
         }else if(dueDate != null){
                 long daysLeft = DAYS.between(LocalDate.now(), new java.sql.Date(dueDate.getTime()).toLocalDate());
                 return this.getTitle()+" ("+this.getDifficulty()+") "+daysLeft+" days left";
-
         }
 
         return this.getTitle()+" ("+this.getDifficulty()+")";

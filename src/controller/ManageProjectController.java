@@ -12,9 +12,7 @@ import model.Project;
 import model.Task;
 
 import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
@@ -103,10 +101,10 @@ public class ManageProjectController extends BasicController {
         tasks.setPredicate(null); //used to reset filter
         //tableView.setItems(tasks);
 
+        List<Task> filteredList = new ArrayList<>();
         if(boxesChecked.size()!=0){
             System.out.println("Filtering with checkboxes");
             List<Predicate<Task>> filtersCollection = new ArrayList<>();
-            List<Task> filteredList = new ArrayList<>();
             for(CheckBox ch : boxesChecked){
                 filtersCollection.add(i -> i.getStatus().equalsIgnoreCase(ch.getText()) || i.getDifficulty().equalsIgnoreCase(ch.getText()));
             }
@@ -119,11 +117,45 @@ public class ManageProjectController extends BasicController {
         }
         if(startDatePicker.getValue() != null){
             System.out.println("Filtering with start date: ");
-
+            if(filteredList.size() == 0){
+                System.out.println("\tNo checkbox filters were used, initializing filterList for start");
+                filteredList = project.getTeam().getTasks();
+            }
+            Iterator<Task> i = filteredList.iterator();
+            Date currFilter = java.sql.Date.valueOf(startDatePicker.getValue());
+            while (i.hasNext()) {
+                Task t = i.next();
+                System.out.println("Comparing: "+t.getStartDate()+", with: "+currFilter);
+                if(t.getStartDate().before(currFilter)){
+                    // delete
+                    System.out.println("Removing");
+                    i.remove();
+                } else{
+                    // keep
+                    System.out.println("Keeping");
+                }
+            }
         }
-        if(startDatePicker.getValue() != null){
+        if(endDatePicker.getValue() != null){
             System.out.println("Filtering with end date: ");
-
+            if(filteredList.size() == 0){
+                System.out.println("\tNo checkbox filters were used, initializing filterList for end");
+                filteredList = project.getTeam().getTasks();
+            }
+            Iterator<Task> i = filteredList.iterator();
+            Date currFilter = java.sql.Date.valueOf(endDatePicker.getValue());
+            while (i.hasNext()) {
+                Task t = i.next();
+                System.out.println("Comparing: "+t.getDueDate()+", with: "+currFilter);
+                if(t.getDueDate().before(currFilter)){
+                    // delete
+                    System.out.println("Removing");
+                    i.remove();
+                } else{
+                    // keep
+                    System.out.println("Keeping");
+                }
+            }
         }
         if(typeComboBox.getValue() != null && directionComboBox.getValue() != null){
             System.out.println("Sorting with type: "+typeComboBox.getValue()+", and: "+directionComboBox.getValue());
