@@ -46,19 +46,19 @@
                   <Button fx:id="renameTeamButton" onAction="#handleRenameTeamButton" layoutX="15.0" layoutY="91.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="370.0" text="Rename Team" />
                   <Button fx:id="membersButton" onAction="#handleMembersButton" layoutX="15.0" layoutY="120.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="370.0" text="Members" />
                   <Button fx:id="viewAnalyticsButton" onAction="#handleViewAnalyticsButton" layoutX="15.0" layoutY="149.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="370.0" text="View Analytics" />
-                  <CheckBox layoutX="44.0" layoutY="255.0" mnemonicParsing="false" text="To Do" />
-                  <CheckBox layoutX="44.0" layoutY="276.0" mnemonicParsing="false" text="In Progress" />
-                  <CheckBox layoutX="44.0" layoutY="297.0" mnemonicParsing="false" text="Halted" />
-                  <CheckBox layoutX="44.0" layoutY="318.0" mnemonicParsing="false" text="Done" />
+                  <CheckBox fx:id="statusToDoCheckBox" layoutX="44.0" layoutY="255.0" mnemonicParsing="false" text="To Do" />
+                  <CheckBox fx:id="statusInProgressCheckBox" layoutX="44.0" layoutY="276.0" mnemonicParsing="false" text="In Progress" />
+                  <CheckBox fx:id="statusHaltedCheckBox" layoutX="44.0" layoutY="297.0" mnemonicParsing="false" text="Halted" />
+                  <CheckBox fx:id="statusDoneCheckBox" layoutX="44.0" layoutY="318.0" mnemonicParsing="false" text="Done" />
                   <Text layoutX="31.0" layoutY="365.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Difficulty">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Text>
-                  <CheckBox layoutX="44.0" layoutY="374.0" mnemonicParsing="false" text="Easy" />
-                  <CheckBox layoutX="44.0" layoutY="395.0" mnemonicParsing="false" text="Medium" />
-                  <CheckBox layoutX="44.0" layoutY="416.0" mnemonicParsing="false" text="Hard" />
-                  <CheckBox layoutX="44.0" layoutY="437.0" mnemonicParsing="false" text="Unknown" />
+                  <CheckBox fx:id="diffEasyCheckBox" layoutX="44.0" layoutY="374.0" mnemonicParsing="false" text="Easy" />
+                  <CheckBox fx:id="diffMediumCheckBox" layoutX="44.0" layoutY="395.0" mnemonicParsing="false" text="Medium" />
+                  <CheckBox fx:id="diffHardCheckBox" layoutX="44.0" layoutY="416.0" mnemonicParsing="false" text="Hard" />
+                  <CheckBox fx:id="diffUnknownCheckBox" layoutX="44.0" layoutY="437.0" mnemonicParsing="false" text="Unknown" />
                   <Text layoutX="31.0" layoutY="489.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Start Date">
                      <font>
                         <Font size="18.0" />
