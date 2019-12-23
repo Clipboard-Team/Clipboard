@@ -26,7 +26,8 @@ public class ManageProjectController extends BasicController {
     @FXML CheckBox statusToDoCheckBox, statusInProgressCheckBox, statusHaltedCheckBox,
             statusDoneCheckBox, diffEasyCheckBox, diffMediumCheckBox, diffHardCheckBox,
             diffUnknownCheckBox;
-    @FXML ComboBox typeComboBox, directionComboBox;
+    @FXML ComboBox<String> typeComboBox, directionComboBox;
+    ObservableList<String> typeComboBoxObservableList, directionComboBoxObservableList;
     ObservableList<Task> tasksObservableList;
     @FXML TableView<Task> tasksTableView;
     @FXML TableColumn<Task, Date> startCol, dueCol;
@@ -50,6 +51,18 @@ public class ManageProjectController extends BasicController {
         addActionToCheckBox(diffMediumCheckBox);
         addActionToCheckBox(diffHardCheckBox);
         addActionToCheckBox(diffUnknownCheckBox);
+
+        List<String> types = new ArrayList<>();
+        types.add("Total Comments");
+        types.add("Alphabetical Task Title");
+        types.add("Start Date");
+        typeComboBoxObservableList = FXCollections.observableList(types);
+        typeComboBox.setItems(typeComboBoxObservableList);
+        List<String> directions = new ArrayList<>();
+        directions.add("Ascending");
+        directions.add("Descending");
+        directionComboBoxObservableList = FXCollections.observableList(directions);
+        directionComboBox.setItems(directionComboBoxObservableList);
 
         startCol.setCellValueFactory(new PropertyValueFactory<>("startDate"));
         dueCol.setCellValueFactory(new PropertyValueFactory<>("dueDate"));
@@ -216,6 +229,10 @@ public class ManageProjectController extends BasicController {
         startDatePicker.getEditor().clear();
         endDatePicker.setValue(null);
         endDatePicker.getEditor().clear();
+        typeComboBox.getSelectionModel().clearSelection();
+        typeComboBox.setPromptText("Type");
+        directionComboBox.getSelectionModel().clearSelection();
+        directionComboBox.setPromptText("Direction");
     }
     public void handleLogoutButton(ActionEvent event){
         System.out.println("Logout Tapped");
