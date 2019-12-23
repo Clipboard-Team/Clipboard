@@ -20,7 +20,7 @@ public class Task {
         this.title = title;
         this.status = status;
         this.difficulty = difficulty;
-        this.startDate = new Date();
+        this.startDate = java.sql.Date.valueOf(LocalDate.now());
     }
 
     public void addComment(Comment comment){
