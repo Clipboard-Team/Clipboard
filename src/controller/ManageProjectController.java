@@ -202,7 +202,20 @@ public class ManageProjectController extends BasicController {
             }
             if(typeComboBox.getValue() != null && directionComboBox.getValue() != null){
                 System.out.println("Sorting with type: "+typeComboBox.getValue()+", and: "+directionComboBox.getValue());
-
+                switch(typeComboBox.getSelectionModel().getSelectedItem()){
+                    case "Total Comments":
+                        break;
+                    case "Alphabetical Task Title":
+                        break;
+                    case "Start Date":
+                        break;
+                }
+                switch(directionComboBox.getSelectionModel().getSelectedItem()){
+                    case "Ascending":
+                        break;
+                    case "Descending":
+                        break;
+                }
             }
             System.out.println("Displaying filtered list onto UI");
             tasksObservableList = FXCollections.observableList(filteredList);
