@@ -12,6 +12,7 @@ import model.Member;
 import model.Project;
 import model.Task;
 
+import javax.swing.*;
 import java.lang.reflect.Array;
 import java.util.*;
 import java.util.function.Predicate;
@@ -47,7 +48,11 @@ public class ManageProjectController extends BasicController {
             try{
                 System.out.println("detected key press");
                 if(searchTextField.getText().isEmpty()){
-                    displayOriginalTasks();
+                    if(filterExists()){
+
+                    } else{
+                        displayOriginalTasks();
+                    }
                     // TODO: create a method that checks if any filter exists, if not use above code, if so, save observable list
                 } else{
                     searchTasks(searchTextField.getText());
@@ -88,6 +93,34 @@ public class ManageProjectController extends BasicController {
         totalCommentsCol.setCellValueFactory(new PropertyValueFactory<>("totalComments"));
         tasksTableView.getColumns().setAll(startCol, dueCol, statusCol, difficultyCol, assignedCol, titleCol, descriptionCol, totalCommentsCol);
         displayOriginalTasks();
+    }
+
+    private boolean filterExists(){
+        List<CheckBox> checkBoxes = new ArrayList<>();
+        checkBoxes.add(statusToDoCheckBox);
+        checkBoxes.add(statusInProgressCheckBox);
+        checkBoxes.add(statusHaltedCheckBox);
+        checkBoxes.add(statusDoneCheckBox);
+        checkBoxes.add(diffEasyCheckBox);
+        checkBoxes.add(diffMediumCheckBox);
+        checkBoxes.add(diffHardCheckBox);
+        checkBoxes.add(diffUnknownCheckBox);
+        for(CheckBox ch : checkBoxes){
+            if(ch.isSelected()){
+                return true;
+            }
+        }
+
+        List<DatePicker> datePickers = new ArrayList<>();
+        datePickers.add(startDatePicker);
+        datePickers.add(endDatePicker);
+        for(DatePicker da : datePickers){
+            if(da.getValue() != null){
+                return true;
+            }
+        }
+
+        return false;
     }
 
     private void searchTasks(String keyword){
