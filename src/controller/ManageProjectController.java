@@ -43,6 +43,20 @@ public class ManageProjectController extends BasicController {
         printCurrentState();
         refreshScreen();
 
+        searchTextField.setOnKeyTyped((event) ->{
+            try{
+                System.out.println("detected key press");
+                if(searchTextField.getText().isEmpty()){
+                    displayOriginalTasks();
+                    // TODO: create a method that checks if any filter exists, if not use above code, if so, save observable list
+                } else{
+                    searchTasks(searchTextField.getText());
+                }
+            } catch(Exception e){
+                e.printStackTrace();
+            }
+        });
+
         addActionToCheckBox(statusToDoCheckBox);
         addActionToCheckBox(statusInProgressCheckBox);
         addActionToCheckBox(statusHaltedCheckBox);
@@ -72,11 +86,18 @@ public class ManageProjectController extends BasicController {
         titleCol.setCellValueFactory(new PropertyValueFactory<>("title"));
         descriptionCol.setCellValueFactory(new PropertyValueFactory<>("description"));
         totalCommentsCol.setCellValueFactory(new PropertyValueFactory<>("totalComments"));
-
         tasksTableView.getColumns().setAll(startCol, dueCol, statusCol, difficultyCol, assignedCol, titleCol, descriptionCol, totalCommentsCol);
         displayOriginalTasks();
     }
 
+    private void searchTasks(String keyword){
+        List<Task> filterList = tasksObservableList.stream().
+                filter(s -> s.getTitle().toUpperCase().//convert to uppercase for checking
+                        contains(keyword.toUpperCase()) || (s.getDescription() != null && s.getDescription().toUpperCase().
+                        contains(keyword.toUpperCase()))).//filter values containing black
+                collect(Collectors.toList());//collect as list
+        tasksTableView.setItems(FXCollections.observableList(filterList));
+    }
     private void displayOriginalTasks(){
         tasksObservableList = FXCollections.observableList(project.getTeam().getTasks());
         tasksTableView.setItems(tasksObservableList);
