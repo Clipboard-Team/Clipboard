@@ -8,21 +8,32 @@ import model.Member;
 import model.Project;
 
 public class NewAdminController extends BasicController {
-    Project project;
+
+    // Data
+    private Project project;
+
+    // Functionality
     @FXML TextField username;
     @FXML Button backButton, nextButton;
-    public void handleBackButton(ActionEvent event){
-        BasicController controller = changeScreen("../view/NewTeam.fxml", event, new NewTeamController());
-        controller.start();
+
+    public void start(Project project){
+        // receive data
+        this.project = project;
     }
+
     public void handleNextButton(ActionEvent event){
         if(!username.getText().isEmpty()){
+            // add data
             project.getTeam().addMember(new Member(username.getText(), project.getTeam(), "Admin"));
+
+            // pass data
             BasicController controller = changeScreen("../view/NewMember.fxml", event, new NewMemberController());
             controller.start(project);
         }
     }
-    public void start(Project project){
-        this.project = project;
+
+    public void handleBackButton(ActionEvent event){
+        BasicController controller = changeScreen("../view/NewTeam.fxml", event, new NewTeamController());
+        controller.start();
     }
 }

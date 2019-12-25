@@ -2,7 +2,6 @@ package controller;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -18,7 +17,8 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class ManageProjectController extends BasicController {
-    //Data
+
+    // Data
     private Project project = null;
     private Member member = null;
 
