@@ -5,7 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import model.Comment;
 import model.Member;
@@ -19,11 +19,11 @@ import java.util.List;
 public class HomeController extends BasicController{
     Project project = null;
     Member member = null;
-    @FXML Label projectTitle, username, role;
+    @FXML Label projectTitle, teamTitle, username, role;
     @FXML Button logoutButton, createButton, editButton
             , deleteButton, leftButton, rightButton, manageButton;
     @FXML ListView<Task> assignedTasks, completedTasks;
-    @FXML VBox mainWindow;
+    @FXML HBox homeWindow;
 
     @FXML ListView<Task> toDoListView, inProgressListView, haltedListView, doneListView;
     int index;
@@ -75,6 +75,7 @@ public class HomeController extends BasicController{
         this.project = project;
         this.member = member;
         projectTitle.setText(project.getTitle());
+        teamTitle.setText(project.getTeam().getTitle());
         username.setText(member.getName());
         role.setText(member.getRole());
         renderTasks();
@@ -125,7 +126,7 @@ public class HomeController extends BasicController{
             assignedComboBox.setItems(membersObservableList);
 
             createTaskPane.setVisible(true);
-            mainWindow.setDisable(true);
+            homeWindow.setDisable(true);
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -244,7 +245,7 @@ public class HomeController extends BasicController{
     public void handleCancelButton(ActionEvent event){
         try{
             createTaskPane.setVisible(false);
-            mainWindow.setDisable(false);
+            homeWindow.setDisable(false);
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -284,7 +285,7 @@ public class HomeController extends BasicController{
                     System.out.println("Task: "+t.getTitle()+" "+t.getStatus()+" "+t.getDifficulty()
                             +"\n\t"+t.getDescription()+"\n\t"+t.getComments()+"\n\t"+t.getAssignedTo());
                     createTaskPane.setVisible(false);
-                    mainWindow.setDisable(false);
+                    homeWindow.setDisable(false);
                     renderTasks();
                 }
             } else{
@@ -342,7 +343,7 @@ public class HomeController extends BasicController{
     @FXML DialogPane viewTaskPane;
     @FXML Text statusViewText, titleViewText, difficultyViewText, assignedViewText, startDateText;
     @FXML TextField commentViewTextField;
-    @FXML Button goToEditViewButton, saveViewButton, assignViewButton, addCommentViewButton;
+    @FXML Button goToEditViewButton, saveViewButton, viewButton, assignViewButton, addCommentViewButton;
     @FXML ListView<Comment> commentsListView;
     ObservableList<Comment> commentsObservableList;
     public void handleViewButton(ActionEvent event){
@@ -359,7 +360,7 @@ public class HomeController extends BasicController{
                 }
 
                 viewTaskPane.setVisible(true);
-                mainWindow.setDisable(true);
+                homeWindow.setDisable(true);
             }
         }catch(Exception e){
             e.printStackTrace();
@@ -372,7 +373,7 @@ public class HomeController extends BasicController{
         System.out.println("Edit button tapped");
         try{
             viewTaskPane.setVisible(false);
-            mainWindow.setDisable(false);
+            homeWindow.setDisable(false);
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -434,7 +435,7 @@ public class HomeController extends BasicController{
                 }
 
                 editTaskPane.setVisible(true);
-                mainWindow.setDisable(true);
+                homeWindow.setDisable(true);
             }
         }catch(Exception e){
             e.printStackTrace();
@@ -493,7 +494,7 @@ public class HomeController extends BasicController{
                     }
                     project.getTeam().getTasks().set(index, selectedTask);
                     editTaskPane.setVisible(false);
-                    mainWindow.setDisable(false);
+                    homeWindow.setDisable(false);
                     renderTasks();
                 } else {
 
@@ -508,7 +509,7 @@ public class HomeController extends BasicController{
     public void handleCancelEditButton(ActionEvent event){
         try{
             editTaskPane.setVisible(false);
-            mainWindow.setDisable(false);
+            homeWindow.setDisable(false);
         }catch(Exception e){
             e.printStackTrace();
         }
