@@ -37,6 +37,7 @@ public class ManageProjectController extends BasicController {
     @FXML TableColumn<Task, Integer> totalCommentsCol;
     private Project project = null;
     private Member member = null;
+    List<Task> filteredList = null;
 
     void start(Project project, Member member){
         this.project = project;
@@ -49,7 +50,7 @@ public class ManageProjectController extends BasicController {
                 System.out.println("detected key press");
                 if(searchTextField.getText().isEmpty()){
                     if(filterExists()){
-
+                        displayFilteredTasks();
                     } else{
                         displayOriginalTasks();
                     }
@@ -124,7 +125,7 @@ public class ManageProjectController extends BasicController {
     }
 
     private void searchTasks(String keyword){
-        List<Task> filterList = tasksObservableList.stream().
+       List<Task> filterList = tasksObservableList.stream().
                 filter(s -> s.getTitle().toUpperCase().//convert to uppercase for checking
                         contains(keyword.toUpperCase()) || (s.getDescription() != null && s.getDescription().toUpperCase().
                         contains(keyword.toUpperCase()))).//filter values containing black
@@ -133,6 +134,10 @@ public class ManageProjectController extends BasicController {
     }
     private void displayOriginalTasks(){
         tasksObservableList = FXCollections.observableList(project.getTeam().getTasks());
+        tasksTableView.setItems(tasksObservableList);
+    }
+    private void displayFilteredTasks(){
+        tasksObservableList = FXCollections.observableList(filteredList);
         tasksTableView.setItems(tasksObservableList);
     }
     void addActionToCheckBox(CheckBox ch){
@@ -191,7 +196,7 @@ public class ManageProjectController extends BasicController {
         tasks.setPredicate(null); //used to reset filter
         //tableView.setItems(tasks);
 
-        List<Task> filteredList = new ArrayList<>();
+        filteredList = new ArrayList<>();
         if(boxesChecked.size()!=0 || startDatePicker.getValue() != null
                 || endDatePicker.getValue() != null
                 || (typeComboBox.getValue() != null && directionComboBox.getValue() != null)){
