@@ -28,7 +28,7 @@
                         <Font size="18.0" />
                      </font>
                   </Text>
-                  <Text layoutX="13.0" layoutY="617.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sort Tasks">
+                  <Text visible="false" layoutX="13.0" layoutY="617.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sort Tasks">
                      <font>
                         <Font size="18.0" />
                      </font>

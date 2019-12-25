@@ -55,6 +55,8 @@ public class NewMemberController extends BasicController{
         adminRadioButton.setSelected(true);
         adminRadioButton.setToggleGroup(group);
         leadRadioButton.setToggleGroup(group);
+        chk = adminRadioButton;
+
         group.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
             @Override
             public void changed(ObservableValue<? extends Toggle> ov, Toggle t, Toggle t1) {

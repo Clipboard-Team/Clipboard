@@ -94,6 +94,12 @@ public class ManageProjectController extends BasicController {
         totalCommentsCol.setCellValueFactory(new PropertyValueFactory<>("totalComments"));
         tasksTableView.getColumns().setAll(startCol, dueCol, statusCol, difficultyCol, assignedCol, titleCol, descriptionCol, totalCommentsCol);
         displayOriginalTasks();
+
+        /*
+        * Cosnidering taking out sorting feature because tableview already does it for us
+        * */
+        typeComboBox.setVisible(false);
+        directionComboBox.setVisible(false);
     }
 
     private boolean filterExists(){
