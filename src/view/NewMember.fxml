@@ -9,16 +9,16 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.NewMemberController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #13293D#13293D #13293D#13293D;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.NewMemberController">
    <children>
       <Pane prefHeight="69.0" prefWidth="600.0">
          <children>
-            <Label layoutX="214.0" layoutY="14.0" text="Add Other Members" textAlignment="CENTER">
+            <Label layoutX="214.0" layoutY="14.0" text="Add Other Members" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label layoutX="192.0" layoutY="37.0" text="Build your team and collaborate together!" textAlignment="CENTER">
+            <Label layoutX="192.0" layoutY="37.0" text="Build your team and collaborate together!" textAlignment="CENTER" textFill="GREY">
                <font>
                   <Font size="11.0" />
                </font>
@@ -28,12 +28,12 @@
       <Pane prefHeight="330.0" prefWidth="600.0">
          <children>
             <TextField fx:id="username" layoutX="217.0" layoutY="208.0" promptText="Username" />
-            <Button fx:id="finalizeButton" onAction="#handleFinalizeButton" layoutX="348.0" layoutY="274.0" mnemonicParsing="false" text="Finalize" />
-            <Button fx:id="backButton" onAction="#handleBackButton" layoutX="206.0" layoutY="274.0" mnemonicParsing="false" text="Go Back" />
-            <Button fx:id="addButton" onAction="#handleAddButton" layoutX="290.0" layoutY="274.0" mnemonicParsing="false" text="Add" />
+            <Button fx:id="finalizeButton" layoutX="348.0" layoutY="274.0" mnemonicParsing="false" onAction="#handleFinalizeButton" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 5;" text="Finalize" textFill="WHITE" />
+            <Button fx:id="backButton" layoutX="206.0" layoutY="274.0" mnemonicParsing="false" onAction="#handleBackButton" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 5;" text="Go Back" textFill="WHITE" />
+            <Button fx:id="addButton" layoutX="290.0" layoutY="274.0" mnemonicParsing="false" onAction="#handleAddButton" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 5;" text="Add" textFill="WHITE" />
             <ListView fx:id="listView" layoutX="178.0" layoutY="31.0" prefHeight="145.0" prefWidth="245.0" />
-            <RadioButton selected="true" fx:id="adminRadioButton" layoutX="232.0" layoutY="244.0" mnemonicParsing="false" text="Admin" />
-            <RadioButton fx:id="leadRadioButton" layoutX="315.0" layoutY="244.0" mnemonicParsing="false" text="Lead" />
+            <RadioButton fx:id="adminRadioButton" layoutX="232.0" layoutY="244.0" mnemonicParsing="false" selected="true" text="Admin" textFill="WHITE" />
+            <RadioButton fx:id="leadRadioButton" layoutX="315.0" layoutY="244.0" mnemonicParsing="false" text="Lead" textFill="WHITE" />
          </children>
       </Pane>
    </children>

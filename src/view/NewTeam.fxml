@@ -7,16 +7,16 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.NewTeamController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #13293D#13293D #13293D#13293D;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.NewTeamController">
    <children>
       <Pane prefHeight="69.0" prefWidth="600.0">
          <children>
-            <Label layoutX="255.0" layoutY="14.0" text="New Team" textAlignment="CENTER">
+            <Label layoutX="255.0" layoutY="14.0" text="New Team" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label layoutX="200.0" layoutY="37.0" text="What do you want to name your team?" textAlignment="CENTER">
+            <Label layoutX="200.0" layoutY="37.0" text="What do you want to name your team?" textAlignment="CENTER" textFill="GREY">
                <font>
                   <Font size="11.0" />
                </font>
@@ -26,8 +26,8 @@
       <Pane prefHeight="200.0" prefWidth="200.0">
          <children>
             <TextField fx:id="teamName" layoutX="217.0" layoutY="87.0" promptText="Team Name" />
-            <Button fx:id="nextButton" onAction="#handleNextButton" layoutX="318.0" layoutY="135.0" mnemonicParsing="false" text="Next" />
-            <Button fx:id="backButton" onAction="#handleBackButton" layoutX="235.0" layoutY="135.0" mnemonicParsing="false" text="Go Back" />
+            <Button fx:id="nextButton" layoutX="318.0" layoutY="135.0" mnemonicParsing="false" onAction="#handleNextButton" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 5;" text="Next" textFill="WHITE" />
+            <Button fx:id="backButton" layoutX="235.0" layoutY="135.0" mnemonicParsing="false" onAction="#handleBackButton" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 5;" text="Go Back" textFill="WHITE" />
          </children>
       </Pane>
    </children>

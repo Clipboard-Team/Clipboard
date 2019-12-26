@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
@@ -16,17 +17,17 @@
 
 <Pane prefHeight="800.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomeController">
    <children>
-      <HBox fx:id="homeWindow" prefHeight="799.0" prefWidth="1599.0">
+      <HBox fx:id="homeWindow" prefHeight="800.0" prefWidth="1600.0" stylesheets="global.css">
          <children>
-            <Pane prefHeight="800.0" prefWidth="400.0">
+            <Pane prefHeight="800.0" prefWidth="400.0" style="-fx-background-color: #13293D#13293D;">
                <children>
-                  <Button fx:id="createButton" layoutX="13.0" layoutY="142.0" mnemonicParsing="false" onAction="#handleCreateButton" prefHeight="30.0" prefWidth="370.0" text="Create Task" />
-                  <Button fx:id="deleteButton" layoutX="13.0" layoutY="232.0" mnemonicParsing="false" onAction="#handleDeleteButton" prefHeight="30.0" prefWidth="370.0" text="Delete Task" />
-                  <Button fx:id="editButton" layoutX="13.0" layoutY="172.0" mnemonicParsing="false" onAction="#handleEditButton" prefHeight="30.0" prefWidth="370.0" text="Edit Task" />
-                  <Button fx:id="viewButton" layoutX="13.0" layoutY="202.0" mnemonicParsing="false" onAction="#handleViewButton" prefHeight="30.0" prefWidth="370.0" text="View Task" />
-                  <Button fx:id="manageButton" layoutX="79.0" layoutY="761.0" mnemonicParsing="false" onAction="#handleManageButton" text="Manage Team" />
-                  <Button fx:id="logoutButton" layoutX="11.0" layoutY="761.0" mnemonicParsing="false" onAction="#handleLogoutButton" text="Logout" />
-                  <Label fx:id="username" layoutX="14.0" layoutY="52.0" text="Username">
+                  <Button fx:id="createButton" layoutX="13.0" layoutY="142.0" mnemonicParsing="false" onAction="#handleCreateButton" prefHeight="30.0" prefWidth="370.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 5;" text="Create Task" textFill="WHITE" />
+                  <Button fx:id="deleteButton" layoutX="13.0" layoutY="277.0" mnemonicParsing="false" onAction="#handleDeleteButton" prefHeight="30.0" prefWidth="370.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 5;" text="Delete Task" textFill="WHITE" />
+                  <Button fx:id="editButton" layoutX="13.0" layoutY="187.0" mnemonicParsing="false" onAction="#handleEditButton" prefHeight="30.0" prefWidth="370.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 5;" text="Edit Task" textFill="WHITE" />
+                  <Button fx:id="viewButton" layoutX="13.0" layoutY="232.0" mnemonicParsing="false" onAction="#handleViewButton" prefHeight="30.0" prefWidth="370.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 5;" text="View Task" textFill="WHITE" />
+                  <Button fx:id="manageButton" layoutX="79.0" layoutY="761.0" mnemonicParsing="false" onAction="#handleManageButton" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 5;" text="Manage Team" textFill="WHITE" />
+                  <Button fx:id="logoutButton" layoutX="11.0" layoutY="761.0" mnemonicParsing="false" onAction="#handleLogoutButton" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 5;" text="Logout" textFill="WHITE" />
+                  <Label fx:id="username" layoutX="14.0" layoutY="52.0" text="Username" textFill="GREY">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -36,7 +37,7 @@
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <Text fx:id="projectText" layoutX="14.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Task Board" textAlignment="CENTER">
+                  <Text fx:id="projectText" fill="WHITE" layoutX="14.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Task Board" textAlignment="CENTER">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -45,7 +46,7 @@
             </Pane>
             <Pane prefHeight="800.0" prefWidth="1200.0">
                <children>
-                  <Label fx:id="projectTitle" layoutX="95.0" layoutY="31.0" text="Project Name">
+                  <Label fx:id="projectTitle" layoutX="95.0" layoutY="31.0" text="Project Name" textFill="#13293d">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -59,7 +60,7 @@
                      <children>
                         <Pane prefHeight="400.0" prefWidth="250.0">
                            <children>
-                              <Label layoutX="105.0" layoutY="12.0" text="To Do" textAlignment="CENTER">
+                              <Label layoutX="105.0" layoutY="12.0" text="To Do" textAlignment="CENTER" textFill="#13293d">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
@@ -69,7 +70,7 @@
                         </Pane>
                         <Pane prefHeight="400.0" prefWidth="250.0">
                            <children>
-                              <Label layoutX="88.0" layoutY="12.0" text="In Progress" textAlignment="CENTER">
+                              <Label layoutX="88.0" layoutY="12.0" text="In Progress" textAlignment="CENTER" textFill="#13293d">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
@@ -79,7 +80,7 @@
                         </Pane>
                         <Pane prefHeight="400.0" prefWidth="250.0">
                            <children>
-                              <Label layoutX="103.0" layoutY="12.0" text="Halted" textAlignment="CENTER">
+                              <Label layoutX="103.0" layoutY="12.0" text="Halted" textAlignment="CENTER" textFill="#13293d">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
@@ -89,7 +90,7 @@
                         </Pane>
                         <Pane prefHeight="400.0" prefWidth="250.0">
                            <children>
-                              <Label layoutX="107.0" layoutY="12.0" text="Done" textAlignment="CENTER">
+                              <Label layoutX="107.0" layoutY="12.0" text="Done" textAlignment="CENTER" textFill="#13293d">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
@@ -99,9 +100,9 @@
                         </Pane>
                      </children>
                   </HBox>
-                  <Button fx:id="leftButton" layoutX="489.0" layoutY="733.0" mnemonicParsing="false" onAction="#handleLeftButton" text="Left" />
-                  <Button fx:id="rightButton" layoutX="654.0" layoutY="733.0" mnemonicParsing="false" onAction="#handleRightButton" text="Right" />
-                  <Label layoutX="550.0" layoutY="735.0" text="Move Task">
+                  <Button fx:id="leftButton" layoutX="489.0" layoutY="733.0" mnemonicParsing="false" onAction="#handleLeftButton" style="-fx-background-color: transparent; -fx-border-color: #13293D#13293D #13293D#13293D; -fx-border-radius: 5;" text="Left" />
+                  <Button fx:id="rightButton" layoutX="654.0" layoutY="733.0" mnemonicParsing="false" onAction="#handleRightButton" style="-fx-background-color: transparent; -fx-border-color: #13293D#13293D #13293D#13293D; -fx-border-radius: 5;" text="Right" />
+                  <Label layoutX="550.0" layoutY="735.0" text="Move Task" textFill="#13293d">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -116,15 +117,14 @@
                <children>
                   <TextField fx:id="taskTitle" layoutX="48.0" layoutY="83.0" promptText="Task Title" />
                   <TextArea fx:id="descriptionTextArea" layoutX="48.0" layoutY="125.0" prefHeight="126.0" prefWidth="626.0" promptText="Task Description" />
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
                   <TextField fx:id="commentTextField" layoutX="48.0" layoutY="257.0" promptText="Optional Comment" />
-                  <Text layoutX="290.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create a New Task" textAlignment="CENTER">
+                  <Text fill="#13293d" layoutX="290.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create a New Task" textAlignment="CENTER">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Text>
-                  <Button fx:id="confirmButton" layoutX="537.0" layoutY="318.0" mnemonicParsing="false" onAction="#handleConfirmButton" text="Confirm" />
-                  <Button fx:id="cancelButton" layoutX="617.0" layoutY="318.0" mnemonicParsing="false" onAction="#handleCancelButton" text="Cancel" />
+                  <Button fx:id="confirmButton" layoutX="537.0" layoutY="318.0" mnemonicParsing="false" onAction="#handleConfirmButton" style="-fx-background-color: transparent; -fx-border-color: #13293D; -fx-border-radius: 5;" text="Confirm" textFill="#13293d" />
+                  <Button fx:id="cancelButton" layoutX="617.0" layoutY="318.0" mnemonicParsing="false" onAction="#handleCancelButton" style="-fx-background-color: transparent; -fx-border-color: #13293D; -fx-border-radius: 5;" text="Cancel" textFill="#13293d" />
                   <ComboBox fx:id="statusComboBox" layoutX="48.0" layoutY="46.0" prefWidth="150.0" promptText="Task Type" />
                   <ComboBox fx:id="assignedComboBox" layoutX="48.0" layoutY="291.0" prefWidth="150.0" promptText="Optional Assign To" />
                   <ComboBox fx:id="difficultyComboBox" layoutX="234.0" layoutY="83.0" prefWidth="150.0" promptText="Difficulty" />
@@ -140,28 +140,27 @@
          <header>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="366.0" prefWidth="722.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
                   <TextField fx:id="commentViewTextField" layoutX="48.0" layoutY="277.0" prefHeight="27.0" prefWidth="348.0" promptText="Add a Comment" />
-                  <Text layoutX="341.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Task" textAlignment="CENTER">
+                  <Text fill="#13293d" layoutX="341.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Task" textAlignment="CENTER">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Text>
-                  <Button fx:id="goToEditViewButton" layoutX="556.0" layoutY="318.0" mnemonicParsing="false" onAction="#handleGoToEditViewButton" text="Edit Task" />
-                  <Button fx:id="saveViewButton" layoutX="635.0" layoutY="318.0" mnemonicParsing="false" onAction="#handleSaveViewButton" text="Save" />
-                  <Button fx:id="assignViewButton" layoutX="456.0" layoutY="318.0" mnemonicParsing="false" onAction="#handleAssignViewButton" text="Assign to Me" />
-                  <Text layoutX="48.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Task Status:" />
-                  <Text layoutX="48.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Task Title:" />
-                  <Text layoutX="48.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Difficulty:" />
-                  <Text layoutX="48.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Assigned To:" />
-                  <Button fx:id="addCommentViewButton" layoutX="48.0" layoutY="318.0" mnemonicParsing="false" onAction="#handleAddCommentViewButton" text="Add Comment" />
+                  <Button fx:id="goToEditViewButton" layoutX="556.0" layoutY="318.0" mnemonicParsing="false" onAction="#handleGoToEditViewButton" style="-fx-background-color: transparent; -fx-border-color: #13293D; -fx-border-radius: 5;" text="Edit Task" textFill="#13293d" />
+                  <Button fx:id="saveViewButton" layoutX="635.0" layoutY="318.0" mnemonicParsing="false" onAction="#handleSaveViewButton" style="-fx-background-color: transparent; -fx-border-color: #13293D; -fx-border-radius: 5;" text="Save" textFill="#13293d" />
+                  <Button fx:id="assignViewButton" layoutX="456.0" layoutY="318.0" mnemonicParsing="false" onAction="#handleAssignViewButton" style="-fx-background-color: transparent; -fx-border-color: #13293D; -fx-border-radius: 5;" text="Assign to Me" textFill="#13293d" />
+                  <Text fill="#13293d" layoutX="48.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Task Status:" />
+                  <Text fill="#13293d" layoutX="48.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Task Title:" />
+                  <Text fill="#13293d" layoutX="48.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Difficulty:" />
+                  <Text fill="#13293d" layoutX="48.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Assigned To:" />
+                  <Button fx:id="addCommentViewButton" layoutX="48.0" layoutY="318.0" mnemonicParsing="false" onAction="#handleAddCommentViewButton" style="-fx-background-color: transparent; -fx-border-color: #13293D; -fx-border-radius: 5;" text="Add Comment" textFill="#13293d" />
                   <ListView fx:id="commentsListView" layoutX="110.0" layoutY="140.0" prefHeight="130.0" prefWidth="501.0" />
-                  <Text fx:id="statusViewText" layoutX="122.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="nullSt" />
-                  <Text fx:id="titleViewText" layoutX="112.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="nullTi" />
-                  <Text fx:id="difficultyViewText" layoutX="104.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="nullDi" />
-                  <Text fx:id="assignedViewText" layoutX="124.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" text="nobody" />
-                  <Text layoutX="531.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Start Date:" />
-                  <Text fx:id="startDateText" layoutX="596.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="default date" />
+                  <Text fx:id="statusViewText" fill="#13293d" layoutX="122.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="nullSt" />
+                  <Text fx:id="titleViewText" fill="#13293d" layoutX="112.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="nullTi" />
+                  <Text fx:id="difficultyViewText" fill="#13293d" layoutX="104.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="nullDi" />
+                  <Text fx:id="assignedViewText" fill="#13293d" layoutX="124.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" text="nobody" />
+                  <Text fill="#13293d" layoutX="531.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Start Date:" />
+                  <Text fx:id="startDateText" fill="#13293d" layoutX="596.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="default date" />
                </children>
             </AnchorPane>
          </header>
@@ -175,15 +174,14 @@
                <children>
                   <TextField fx:id="taskEditTitle" layoutX="48.0" layoutY="83.0" promptText="Task Title" />
                   <TextArea fx:id="descriptionEditTextArea" layoutX="48.0" layoutY="125.0" prefHeight="126.0" prefWidth="626.0" promptText="Task Description" />
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
                   <TextField fx:id="commentEditTextField" layoutX="48.0" layoutY="257.0" promptText="Optional Comment" />
-                  <Text layoutX="294.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Edit Existing Task" textAlignment="CENTER">
+                  <Text fill="#13293d" layoutX="294.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Edit Existing Task" textAlignment="CENTER">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Text>
-                  <Button fx:id="confirmEditButton" layoutX="537.0" layoutY="318.0" mnemonicParsing="false" onAction="#handleConfirmEditButton" text="Confirm" />
-                  <Button fx:id="cancelEditButton" layoutX="617.0" layoutY="318.0" mnemonicParsing="false" onAction="#handleCancelEditButton" text="Cancel" />
+                  <Button fx:id="confirmEditButton" layoutX="537.0" layoutY="318.0" mnemonicParsing="false" onAction="#handleConfirmEditButton" style="-fx-background-color: transparent; -fx-border-color: #13293D; -fx-border-radius: 5;" text="Confirm" textFill="#13293d" />
+                  <Button fx:id="cancelEditButton" layoutX="617.0" layoutY="318.0" mnemonicParsing="false" onAction="#handleCancelEditButton" style="-fx-background-color: transparent; -fx-border-color: #13293D; -fx-border-radius: 5;" text="Cancel" textFill="#13293d" />
                   <ComboBox fx:id="statusEditComboBox" layoutX="48.0" layoutY="46.0" prefWidth="150.0" promptText="Task Type" />
                   <ComboBox fx:id="assignedEditComboBox" layoutX="48.0" layoutY="291.0" prefWidth="150.0" promptText="Optional Assign To" />
                   <ComboBox fx:id="difficultyEditComboBox" layoutX="234.0" layoutY="83.0" prefWidth="150.0" promptText="Difficulty" />
@@ -196,4 +194,8 @@
          </expandableContent>
       </DialogPane>
    </children>
+
+   <stylesheets>
+      <URL value="@global.css" />
+   </stylesheets>
 </Pane>
